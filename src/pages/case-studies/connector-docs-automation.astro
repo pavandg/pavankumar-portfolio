@@ -1,0 +1,92 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+---
+
+<CaseStudyLayout
+  title="Connector Documentation Automation"
+  summary="Automated documentation generation for 400+ security integrations by building a source-driven pipeline from connector YAML metadata, saving an estimated 40-60+ person-months of manual effort."
+  date="2024 - 2026"
+  role="Program Owner / Automation Lead"
+  tags={["Automation", "Python", "YAML", "Docs-as-Code", "Scale"]}
+>
+
+<h2>Problem</h2>
+
+<p>The security automation platform supported 400+ third-party integrations (connectors), but documentation for these connectors was:</p>
+
+<ul>
+  <li>Manually created and maintained, leading to inconsistencies across the catalog</li>
+  <li>Frequently out of sync with the actual connector behavior and configuration</li>
+  <li>Missing standardized authentication and configuration guides for many connectors</li>
+  <li>Impossible to scale with a single-person documentation team</li>
+</ul>
+
+<p>At the rate of manual authoring, covering the full connector catalog would have required an estimated 40-60+ person-months of effort.</p>
+
+<h2>My Role</h2>
+
+<p>I designed and executed the entire connector documentation automation program: content modeling, pipeline development, guide creation, validation, and publishing integration.</p>
+
+<h2>What I Did</h2>
+
+<ol>
+  <li><strong>Designed the content model</strong> by analyzing connector repository structure and identifying the source files that define each connector's metadata, configuration parameters, and action definitions</li>
+  <li><strong>Built a conversion pipeline</strong> (Python) that generates a standardized Markdown documentation page per connector from:
+    <ul>
+      <li><code>connector.yaml</code> for metadata and keywords</li>
+      <li>Configuration asset YAML files for setup parameters</li>
+      <li>Action YAML files for input/output parameter tables</li>
+      <li>README content for connector overview</li>
+    </ul>
+  </li>
+  <li><strong>Created authentication and configuration guides</strong> at scale, delivering 40+ authentication guides and 59 configuration guides to improve connector onboarding</li>
+  <li><strong>Built validation tooling</strong> to enforce publishing platform constraints (heading depth, table sizes, content length) and catch formatting risks before ingestion</li>
+  <li><strong>Hardened changelog and release automation</strong> by identifying failure modes in the existing release/publish workflows and implementing fallback-safe patterns</li>
+  <li><strong>Produced operational runbooks</strong> for triggering updates, verifying output, troubleshooting failures, and onboarding new team members</li>
+</ol>
+
+<h2>Constraints</h2>
+
+<ul>
+  <li>400+ connector repositories across a GitHub organization, each with slightly different structures</li>
+  <li>Publishing platform (Archbee) had specific ingestion limits that required content shaping</li>
+  <li>Connector releases continued independently; documentation had to stay synchronized without manual intervention</li>
+  <li>No dedicated engineering support for the pipeline; built and maintained entirely within the documentation team</li>
+</ul>
+
+<h2>Outcomes</h2>
+
+<h3>Customer Impact</h3>
+<ul>
+  <li>Standardized documentation across the full connector catalog, reducing customer confusion during integration setup</li>
+  <li>Expanded authentication guide coverage improved onboarding success for new connector adoption</li>
+  <li>Reduced documentation drift by keeping docs synchronized with live connector source definitions</li>
+</ul>
+
+<h3>Operational Impact</h3>
+<ul>
+  <li>Saved an estimated 40-60+ person-months of manual documentation effort</li>
+  <li>Established a repeatable pipeline that scales with the connector catalog growth</li>
+  <li>Reduced release-time documentation bottlenecks with automated changelog and doc update workflows</li>
+  <li>Produced reusable process documentation for demos, onboarding, and team handoffs</li>
+</ul>
+
+<h2>Technical Approach (Highlights)</h2>
+
+<ul>
+  <li>Flattened nested configuration schemas using dot notation for readability</li>
+  <li>Generated consistent input/output parameter tables with real examples from YAML where available</li>
+  <li>Applied safe defaults when descriptions or examples were missing in source files</li>
+  <li>Parallelized bulk conversion for performance across hundreds of repositories</li>
+  <li>Used shallow clone and marketplace-based filtering to process only published connectors</li>
+</ul>
+
+<h2>Lessons Learned</h2>
+
+<ul>
+  <li>Source-driven documentation scales; manual documentation does not. Making the connector repository the single source of truth was the most important architectural decision</li>
+  <li>Validation tooling pays for itself immediately: catching format issues before publishing prevents customer-visible broken pages</li>
+  <li>Operational runbooks are as important as the automation itself; without them, the pipeline becomes a single point of failure tied to one person</li>
+</ul>
+
+</CaseStudyLayout>

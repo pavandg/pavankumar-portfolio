@@ -1,0 +1,105 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+---
+
+<CaseStudyLayout
+  title="Documentation Modernization and Publishing Automation at Synopsys"
+  summary="Led documentation modernization from unstructured FrameMaker to DITA, built CI/CD publishing pipelines with GitHub Actions and Sphinx, and integrated Typesense search to improve discoverability across processor platform documentation."
+  date="2015 - 2024"
+  role="Staff Technical Writer"
+  tags={["DITA", "FrameMaker", "Sphinx", "GitHub Actions", "AWS S3", "Typesense", "CI/CD", "Documentation Infrastructure"]}
+>
+
+<h2>Problem</h2>
+
+<p>Documentation for complex hardware and software processor products was maintained using unstructured FrameMaker, a legacy desktop authoring tool. This created multiple challenges:</p>
+
+<ul>
+  <li>No content reuse across product lines, leading to duplicated effort and inconsistencies</li>
+  <li>A customer requirement for DITA-formatted source alongside PDF deliverables, with an ongoing two-year commitment for updates</li>
+  <li>Manual publishing workflows that required rebuilding and uploading documentation by hand for each release</li>
+  <li>Default Sphinx search was inadequate for the growing documentation corpus, making it difficult for users to find information</li>
+</ul>
+
+<h2>My Role</h2>
+
+<p>As a Staff Technical Writer over nearly nine years, I owned documentation delivery for multiple processor platforms, led format modernization initiatives, built publishing automation, and drove documentation infrastructure improvements.</p>
+
+<h2>What I Did</h2>
+
+<h3>DITA Modernization from FrameMaker</h3>
+<ol>
+  <li><strong>Evaluated two approaches</strong> for DITA conversion: maintaining FrameMaker as the primary source with per-release DITA exports, or fully converting to DITA as the primary authoring format</li>
+  <li><strong>Chose full DITA conversion</strong> because the internal content reuse requirement made it the stronger long-term approach</li>
+  <li><strong>Managed the conversion</strong> using a third-party migration service (Stilo Migrate) for the initial unstructured-to-DITA conversion, then owned all pre-conversion and post-conversion cleanup</li>
+  <li><strong>Continued authoring in DITA</strong> for all subsequent releases, delivering both DITA source and PDF output to the customer</li>
+</ol>
+
+<h3>Publishing Automation with GitHub Actions</h3>
+<ol>
+  <li><strong>Built a CI/CD pipeline</strong> using GitHub Actions that automatically generates HTML from reStructuredText documentation using Sphinx and deploys it to AWS S3</li>
+  <li><strong>Designed the workflow</strong> to trigger on pull request merges and also support manual dispatch for ad-hoc publishing</li>
+  <li><strong>Configured artifact archiving</strong> so each build produces a downloadable documentation snapshot alongside the live deployment</li>
+  <li><strong>Documented the entire pipeline</strong> so non-technical team members could understand, maintain, and extend it</li>
+</ol>
+
+<h3>Search Integration with Typesense</h3>
+<ol>
+  <li><strong>Replaced the default Sphinx search</strong> with Typesense, a fast, typo-tolerant search engine</li>
+  <li><strong>Configured the Docsearch Scraper</strong> to crawl the documentation site and index content with proper heading hierarchy</li>
+  <li><strong>Integrated the search bar</strong> into the ReadTheDocs theme using custom JavaScript and CSS injection</li>
+  <li><strong>Improved search relevance</strong> by tuning selectors to match the documentation theme structure</li>
+</ol>
+
+<h3>Documentation Site UX Improvements</h3>
+<ul>
+  <li>Designed a documentation homepage template using Sphinx-design extension (cards, tabs, grids) for improved discoverability</li>
+  <li>Added custom navigation menus to the ReadTheDocs theme header using JavaScript injection for cross-product navigation</li>
+  <li>Implemented Perforce changelist templates to improve documentation change traceability</li>
+</ul>
+
+<h2>Constraints</h2>
+
+<ul>
+  <li>Nine years of accumulated legacy content across multiple processor product lines</li>
+  <li>Distributed engineering teams across multiple geographies and time zones</li>
+  <li>Customer contractual requirement for ongoing DITA deliverables (not a one-time conversion)</li>
+  <li>Limited IT support for infrastructure changes (for example, Perforce trigger restrictions that required client-side workarounds)</li>
+</ul>
+
+<h2>Outcomes</h2>
+
+<h3>Customer Impact</h3>
+<ul>
+  <li>Delivered DITA source and PDF documentation to a key customer over multiple release cycles, meeting contractual requirements</li>
+  <li>Improved search experience with Typesense integration, replacing inadequate default Sphinx search</li>
+  <li>Better content organization through homepage redesign and cross-product navigation</li>
+</ul>
+
+<h3>Operational Impact</h3>
+<ul>
+  <li>Automated publishing reduced manual build-and-upload effort to a single pull request merge</li>
+  <li>Enabled content reuse across product lines through DITA conversion, reducing duplicate authoring</li>
+  <li>Improved documentation change traceability through customized Perforce changelist templates</li>
+  <li>Conducted documentation quality audits that improved consistency across all product documentation</li>
+</ul>
+
+<h2>Technical Writing and Infrastructure Overlap</h2>
+
+<p>
+  This work demonstrates a pattern that recurred throughout my Synopsys tenure: documentation
+  professionals can own significant infrastructure improvements (CI/CD, search, hosting, format
+  migration) without needing dedicated engineering resources, if they are willing to learn the
+  tooling and treat documentation as a product with its own build, deploy, and operations lifecycle.
+</p>
+
+<h2>Lessons Learned</h2>
+
+<ul>
+  <li>Full DITA conversion is the right choice when content reuse is the primary driver; per-release exports are better when the conversion is purely a customer deliverable format</li>
+  <li>Publishing automation pays for itself within one release cycle; manual publishing is the single largest source of preventable documentation errors</li>
+  <li>Owning infrastructure (CI/CD, search integration) gives documentation teams independence and speed; waiting for IT or engineering support creates bottlenecks</li>
+  <li>Search quality is a documentation UX feature, not just a platform feature; investing in Typesense integration had measurable impact on user satisfaction</li>
+</ul>
+
+</CaseStudyLayout>

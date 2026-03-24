@@ -1,0 +1,90 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+---
+
+<CaseStudyLayout
+  title="Marketplace Category Remediation"
+  summary="Identified and resolved duplicate category metadata across hundreds of marketplace connectors using AI-assisted code analysis and bulk automation."
+  date="March 2026"
+  role="Investigation Lead / Remediation Owner"
+  tags={["Data Quality", "AI-Assisted Analysis", "Marketplace", "GitHub Automation"]}
+>
+
+<h2>Problem</h2>
+
+<p>The product's Content Library displayed duplicate and inconsistent category names in the filter panel. For example:</p>
+
+<ul>
+  <li>"SIEM &amp; Log Management" and "SIEM and Log Management" appeared as separate categories</li>
+  <li>"Endpoint Security &amp; Management" and "Endpoint Security and Management" coexisted</li>
+  <li>"Identity &amp; Access Management" and "Identity Management" showed as distinct entries</li>
+</ul>
+
+<p>This created a confusing user experience where customers could not reliably filter connectors by category, and the marketplace appeared unpolished.</p>
+
+<h2>My Role</h2>
+
+<p>I owned the investigation, root cause analysis, remediation plan, stakeholder communication, and execution of the fix across all affected connector repositories.</p>
+
+<h2>What I Did</h2>
+
+<ol>
+  <li><strong>Investigated the root cause</strong> by using AI-assisted code analysis to trace how categories flow from connector metadata through the SDK to the marketplace UI. Identified that categories are stored as <code>keywords</code> in each connector's <code>connector.yaml</code> file, and the canonical category list was defined in the SDK but not enforced</li>
+  <li><strong>Mapped the discrepancies</strong> between the canonical category list (in the SDK) and actual connector metadata across the connector organization. Found that connectors created at different times used inconsistent naming (ampersands vs. spelled-out "and", abbreviations vs. full names)</li>
+  <li><strong>Built a remediation script</strong> that:
+    <ul>
+      <li>Iterated across all connector repositories</li>
+      <li>Read each connector's <code>connector.yaml</code></li>
+      <li>Mapped old/incorrect category names to canonical versions</li>
+      <li>Created pull requests with the corrected metadata</li>
+    </ul>
+  </li>
+  <li><strong>Managed the republishing workflow</strong> by determining that fixing the YAML alone was insufficient; connectors needed to be republished for the marketplace to reflect the corrected categories</li>
+  <li><strong>Communicated the plan and progress</strong> to my manager with clear write-ups of the problem scope, approach, and status at each stage</li>
+</ol>
+
+<h2>Constraints</h2>
+
+<ul>
+  <li>Hundreds of separate repositories to update (one per connector)</li>
+  <li>GitHub API rate limits restricted bulk operations</li>
+  <li>Republishing required marketplace admin credentials and coordination with the team</li>
+  <li>Some connectors required manual category assignment because their original categories did not map cleanly to the canonical list</li>
+</ul>
+
+<h2>Outcomes</h2>
+
+<h3>Customer Impact</h3>
+<ul>
+  <li>Eliminated duplicate categories from the Content Library filter panel</li>
+  <li>Improved connector discoverability for customers browsing by category</li>
+  <li>Cleaned up the marketplace's professional appearance</li>
+</ul>
+
+<h3>Process Impact</h3>
+<ul>
+  <li>Established a validated category mapping that prevents future drift</li>
+  <li>Demonstrated a repeatable pattern for bulk metadata remediation across large connector catalogs</li>
+  <li>Identified that the SDK's category enum was outdated and needed alignment with the canonical list</li>
+</ul>
+
+<h2>AI-Assisted Workflow</h2>
+
+<p>This project used AI-assisted code analysis (Cursor) throughout:</p>
+
+<ul>
+  <li><strong>Root cause tracing</strong>: AI helped navigate the SDK codebase to locate where categories are defined, validated, and consumed</li>
+  <li><strong>Impact assessment</strong>: AI helped enumerate all connector repositories using wrong category names and classify the discrepancies</li>
+  <li><strong>Script generation</strong>: AI assisted in building the bulk remediation and PR-creation scripts</li>
+  <li><strong>Stakeholder communication</strong>: AI helped draft clear, non-technical write-ups for manager communication</li>
+</ul>
+
+<h2>Lessons Learned</h2>
+
+<ul>
+  <li>Data quality problems in marketplaces are often invisible until a customer (or team member) notices the filter panel; proactive auditing is worthwhile</li>
+  <li>Fixing metadata at the source is always the right approach, even when it means updating hundreds of repositories instead of patching the UI</li>
+  <li>AI-assisted code analysis dramatically accelerated the investigation; tracing category flow through SDK source code would have taken days manually</li>
+</ul>
+
+</CaseStudyLayout>

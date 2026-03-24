@@ -1,0 +1,30 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  summary: string;
+  date: string;
+  tags: string[];
+  role: string;
+}
+
+const { title, summary, date, tags, role } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Pavan Kumar DG`} description={summary} activePage="work">
+  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+    <a href="/work" class="back-link">&larr; All Work</a>
+    <div class="case-study-header">
+      <p class="case-study-header__meta">{date} &middot; {role}</p>
+      <h1>{title}</h1>
+      <p style="font-size: 1.1rem; margin-top: 0.75rem;">{summary}</p>
+      <div class="tags">
+        {tags.map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+    </div>
+    <article class="prose">
+      <slot />
+    </article>
+  </div>
+</BaseLayout>

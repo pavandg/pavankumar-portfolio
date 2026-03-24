@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projects = [
+  {
+    slug: "docs-platform-migration",
+    tag: "Platform Migration",
+    title: "Documentation Platform Migration",
+    desc: "Led the end-to-end migration of docs.swimlane.com from MadCap Flare to Archbee, reducing costs by ~80% while improving search, AI-assisted discovery, and content modularity.",
+    company: "Swimlane",
+  },
+  {
+    slug: "connector-docs-automation",
+    tag: "Automation",
+    title: "Connector Documentation Automation",
+    desc: "Automated documentation generation for 400+ security integrations by building a source-driven pipeline from connector YAML metadata.",
+    company: "Swimlane",
+  },
+  {
+    slug: "marketplace-category-remediation",
+    tag: "Data Quality",
+    title: "Marketplace Category Remediation",
+    desc: "Identified and resolved duplicate category metadata across hundreds of marketplace connectors using AI-assisted code analysis and bulk automation.",
+    company: "Swimlane",
+  },
+  {
+    slug: "release-docs-reliability",
+    tag: "Release Engineering",
+    title: "Release Documentation Reliability",
+    desc: "Improved release notes quality, docs accuracy auditing, and changelog automation to reduce customer-facing documentation defects.",
+    company: "Swimlane",
+  },
+  {
+    slug: "synopsys-docs-modernization",
+    tag: "Docs Infrastructure",
+    title: "Documentation Modernization and Publishing Automation",
+    desc: "Led DITA modernization from FrameMaker, built CI/CD publishing pipelines with GitHub Actions and Sphinx, and integrated Typesense search across processor platform documentation.",
+    company: "Synopsys",
+  },
+];
+---
+
+<BaseLayout title="Work | Pavan Kumar DG" activePage="work">
+  <div class="container">
+    <section class="hero">
+      <h1 class="hero__title">Work</h1>
+      <p class="hero__subtitle">
+        Selected projects that demonstrate documentation strategy, platform thinking, automation, and measurable customer impact.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="card-grid">
+        {projects.map((p) => (
+          <a href={`/case-studies/${p.slug}`} class="card" style="text-decoration:none;">
+            <span class="card__tag">{p.company} &middot; {p.tag}</span>
+            <h3 class="card__title">{p.title}</h3>
+            <p class="card__desc">{p.desc}</p>
+            <span class="card__link">Read case study &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
