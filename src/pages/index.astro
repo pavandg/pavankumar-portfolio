@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
 
 const paths = [
-  { goal: "Evaluate me for a documentation leadership role", link: "/about#leadership", label: "Leadership & scope" },
-  { goal: "See platform, automation, and MCP work", link: "/work", label: "Work portfolio" },
-  { goal: "Understand how I use AI in Tech Pubs", link: "/posts/how-i-use-ai-for-docs-ops", label: "AI for docs operations" },
-  { goal: "Read a flagship case study", link: "/case-studies/techpubs-knowledge-center", label: "Knowledge center & automation" },
-  { goal: "Get in touch", link: "/contact", label: "Contact" },
+  { goal: "Evaluate me for a documentation leadership role", link: withBase("/about#leadership"), label: "Leadership & scope" },
+  { goal: "See platform, automation, and MCP work", link: withBase("/work"), label: "Work portfolio" },
+  { goal: "Understand how I use AI in Tech Pubs", link: withBase("/posts/how-i-use-ai-for-docs-ops"), label: "AI for docs operations" },
+  { goal: "Read a flagship case study", link: withBase("/case-studies/techpubs-knowledge-center"), label: "Knowledge center & automation" },
+  { goal: "Get in touch", link: withBase("/contact"), label: "Contact" },
 ];
 ---
 
@@ -45,22 +46,22 @@ const paths = [
       <p style="font-size:0.9rem;margin-bottom:0;">The same pipeline I build for product docs — applied to how I lead Tech Pubs.</p>
 
       <div class="workflow-strip">
-        <a href="/work#plan" class="workflow-step" style="text-decoration:none;color:inherit;">
+        <a href={withBase("/work#plan")} class="workflow-step" style="text-decoration:none;color:inherit;">
           <div class="workflow-step__num">01</div>
           <div class="workflow-step__label">Plan</div>
           <p class="workflow-step__desc">Platform strategy &amp; information architecture</p>
         </a>
-        <a href="/work#build" class="workflow-step" style="text-decoration:none;color:inherit;">
+        <a href={withBase("/work#build")} class="workflow-step" style="text-decoration:none;color:inherit;">
           <div class="workflow-step__num">02</div>
           <div class="workflow-step__label">Build</div>
           <p class="workflow-step__desc">Pipelines, automation &amp; knowledge systems</p>
         </a>
-        <a href="/work#assure" class="workflow-step" style="text-decoration:none;color:inherit;">
+        <a href={withBase("/work#assure")} class="workflow-step" style="text-decoration:none;color:inherit;">
           <div class="workflow-step__num">03</div>
           <div class="workflow-step__label">Assure</div>
           <p class="workflow-step__desc">Validation, auditing &amp; release quality</p>
         </a>
-        <a href="/work#operate" class="workflow-step" style="text-decoration:none;color:inherit;">
+        <a href={withBase("/work#operate")} class="workflow-step" style="text-decoration:none;color:inherit;">
           <div class="workflow-step__num">04</div>
           <div class="workflow-step__label">Operate</div>
           <p class="workflow-step__desc">Publish, maintain &amp; improve at scale</p>
@@ -89,7 +90,7 @@ const paths = [
 
     <section>
       <p class="section__eyebrow">Flagship project</p>
-      <a href="/case-studies/techpubs-knowledge-center" class="featured-study">
+      <a href={withBase("/case-studies/techpubs-knowledge-center")} class="featured-study">
         <div>
           <p class="featured-study__meta">Swimlane · 2025–2026</p>
           <h3>Tech Pubs Knowledge Center</h3>
@@ -143,7 +144,7 @@ const paths = [
     <section class="cta-band">
       <h2>Open to documentation leadership conversations.</h2>
       <p>Platform strategy, Tech Pubs management, and AI-assisted documentation operations.</p>
-      <a href="/contact" class="btn btn--primary">Contact me</a>
+      <a href={withBase("/contact")} class="btn btn--primary">Contact me</a>
     </section>
 
   </div>

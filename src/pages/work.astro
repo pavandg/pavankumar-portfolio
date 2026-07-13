@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
 
 const stages = [
   {
@@ -119,7 +120,7 @@ const stages = [
         </div>
         <div class="stage-grid">
           {stage.projects.map((p) => (
-            <a href={`/case-studies/${p.slug}`} class="card" style="text-decoration:none;">
+            <a href={withBase(`/case-studies/${p.slug}`)} class="card" style="text-decoration:none;">
               <span class="card__tag">{p.tag}</span>
               <h3 class="card__title">{p.title}</h3>
               <p class="card__desc">{p.desc}</p>

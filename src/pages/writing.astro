@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
 
 const posts = [
   {
@@ -54,7 +55,7 @@ const posts = [
     <section class="section" style="padding-top: 0;">
       <div class="card-grid card-grid--2">
         {posts.map((post) => (
-          <a href={`/posts/${post.slug}`} class="card" style="text-decoration:none;">
+          <a href={withBase(`/posts/${post.slug}`)} class="card" style="text-decoration:none;">
             <p class="case-study-header__meta">{post.date}</p>
             <h3 class="card__title">{post.title}</h3>
             <p class="card__desc">{post.summary}</p>

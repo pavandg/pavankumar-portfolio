@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
 ---
 
 <BaseLayout title="About | Pavan Kumar DG" activePage="about">
@@ -8,7 +9,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <p class="section__eyebrow">About</p>
       <h1 class="hero__title">About Me</h1>
       <p style="margin-top: 1rem;">
-        <a href="/Pavan_Kumar_Resume.pdf" download class="btn btn--primary">Download resume (PDF)</a>
+        <a href={withBase("/Pavan_Kumar_Resume.pdf")} download class="btn btn--primary">Download resume (PDF)</a>
       </p>
     </section>
 

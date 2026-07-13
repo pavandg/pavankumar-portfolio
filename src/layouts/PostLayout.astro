@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { withBase } from "../lib/paths";
 
 interface Props {
   title: string;
@@ -12,7 +13,7 @@ const { title, date, summary } = Astro.props;
 
 <BaseLayout title={`${title} | Pavan Kumar DG`} description={summary} activePage="writing">
   <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
-    <a href="/writing" class="back-link">&larr; All Posts</a>
+    <a href={withBase("/writing")} class="back-link">&larr; All Posts</a>
     <header class="case-study-header">
       <p class="case-study-header__meta">{date}</p>
       <h1>{title}</h1>

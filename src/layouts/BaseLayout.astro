@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../lib/paths";
+
 interface Props {
   title: string;
   description?: string;
@@ -18,18 +20,18 @@ const { title, description = "Documentation Platform and Enablement Leader", act
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
   </head>
   <body>
     <nav class="nav">
       <div class="nav__inner">
-        <a href="/" class="nav__brand">Pavan Kumar DG</a>
+        <a href={withBase("/")} class="nav__brand">Pavan Kumar DG</a>
         <ul class="nav__links">
-          <li><a href="/" class={activePage === "home" ? "active" : ""}>Home</a></li>
-          <li><a href="/work" class={activePage === "work" ? "active" : ""}>Work</a></li>
-          <li><a href="/writing" class={activePage === "writing" ? "active" : ""}>Writing</a></li>
-          <li><a href="/about" class={activePage === "about" ? "active" : ""}>About</a></li>
-          <li><a href="/contact" class={activePage === "contact" ? "active nav__cta" : "nav__cta"}>Contact</a></li>
+          <li><a href={withBase("/")} class={activePage === "home" ? "active" : ""}>Home</a></li>
+          <li><a href={withBase("/work")} class={activePage === "work" ? "active" : ""}>Work</a></li>
+          <li><a href={withBase("/writing")} class={activePage === "writing" ? "active" : ""}>Writing</a></li>
+          <li><a href={withBase("/about")} class={activePage === "about" ? "active" : ""}>About</a></li>
+          <li><a href={withBase("/contact")} class={activePage === "contact" ? "active nav__cta" : "nav__cta"}>Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -47,7 +49,7 @@ const { title, description = "Documentation Platform and Enablement Leader", act
         <div class="footer__links">
           <a href="https://www.linkedin.com/in/pavan-kumar-dharmavaram-giridhar/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="mailto:pavandg2006@gmail.com">Email</a>
-          <a href="/work">Work</a>
+          <a href={withBase("/work")}>Work</a>
         </div>
       </div>
       <p class="footer__disclaimer">© {new Date().getFullYear()} · Selected details generalized for confidentiality.</p>
