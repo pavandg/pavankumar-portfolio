@@ -21,11 +21,12 @@ const { title, description = "Documentation Platform and Enablement Leader", act
     <meta property="og:type" content="website" />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
+    <link rel="canonical" href={`https://pavandg.github.io${withBase("/")}`} />
   </head>
   <body>
     <nav class="nav">
       <div class="nav__inner">
-        <a href={withBase("/")} class="nav__brand">Pavan Kumar DG</a>
+        <a href="https://pavandg.github.io/pavankumar-portfolio/" class="nav__brand">Pavan Kumar DG</a>
         <ul class="nav__links">
           <li><a href={withBase("/")} class={activePage === "home" ? "active" : ""}>Home</a></li>
           <li><a href={withBase("/work")} class={activePage === "work" ? "active" : ""}>Work</a></li>
