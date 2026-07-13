@@ -8,6 +8,9 @@ interface Props {
 }
 
 const { title, description = "Documentation Platform and Enablement Leader", activePage = "" } = Astro.props;
+
+/** Absolute home URL. Use index.html to bypass browsers that cached a 301 to the old custom domain. */
+const homeUrl = "https://pavandg.github.io/pavankumar-portfolio/index.html";
 ---
 
 <!doctype html>
@@ -21,14 +24,14 @@ const { title, description = "Documentation Platform and Enablement Leader", act
     <meta property="og:type" content="website" />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
-    <link rel="canonical" href={`https://pavandg.github.io${withBase("/")}`} />
+    <link rel="canonical" href={homeUrl} />
   </head>
   <body>
     <nav class="nav">
       <div class="nav__inner">
-        <a href="https://pavandg.github.io/pavankumar-portfolio/" class="nav__brand">Pavan Kumar DG</a>
+        <a href={homeUrl} class="nav__brand">Pavan Kumar DG</a>
         <ul class="nav__links">
-          <li><a href={withBase("/")} class={activePage === "home" ? "active" : ""}>Home</a></li>
+          <li><a href={homeUrl} class={activePage === "home" ? "active" : ""}>Home</a></li>
           <li><a href={withBase("/work")} class={activePage === "work" ? "active" : ""}>Work</a></li>
           <li><a href={withBase("/writing")} class={activePage === "writing" ? "active" : ""}>Writing</a></li>
           <li><a href={withBase("/about")} class={activePage === "about" ? "active" : ""}>About</a></li>
