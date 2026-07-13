@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pavan Kumar DG — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #1c1917;
+      --muted: #57534e;
+      --light: #78716c;
+      --accent: #5b21b6;
+      --rule: #d6cec2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @page {
+      size: letter;
+      margin: 0.55in 0.6in 0.5in;
+    }
+
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 9.25pt;
+      line-height: 1.45;
+      color: var(--text);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .resume {
+      max-width: 7.4in;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 2px solid var(--text);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+
+    .header h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 22pt;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .header .tagline {
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      font-size: 8.5pt;
+      color: var(--muted);
+    }
+
+    .contact a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+    }
+
+    .summary p {
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .summary p:last-child { margin-bottom: 0; }
+
+    /* Skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 20px;
+    }
+
+    .skill-group strong {
+      display: block;
+      font-size: 8.5pt;
+      margin-bottom: 1px;
+    }
+
+    .skill-group span {
+      font-size: 8.5pt;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .caps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 16px;
+      list-style: none;
+      font-size: 8.5pt;
+      color: var(--muted);
+    }
+
+    .caps-grid li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    /* Experience */
+    .job {
+      margin-bottom: 10px;
+      break-inside: avoid;
+    }
+
+    .job:last-child { margin-bottom: 0; }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 1px;
+    }
+
+    .job-company {
+      font-weight: 700;
+      font-size: 9.5pt;
+    }
+
+    .job-location {
+      font-size: 8.5pt;
+      color: var(--light);
+      white-space: nowrap;
+    }
+
+    .job-role-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .job-role {
+      font-weight: 600;
+      font-size: 9pt;
+      color: var(--accent);
+    }
+
+    .job-dates {
+      font-size: 8.5pt;
+      color: var(--light);
+      white-space: nowrap;
+    }
+
+    .job-intro {
+      font-size: 8.5pt;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-style: italic;
+    }
+
+    .job ul {
+      padding-left: 14px;
+      margin: 0;
+    }
+
+    .job li {
+      font-size: 8.5pt;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .job li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .sub-label {
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--light);
+      margin: 4px 0 3px;
+    }
+
+    /* Education & awards */
+    .edu-item {
+      margin-bottom: 4px;
+    }
+
+    .edu-item strong { font-size: 9pt; }
+
+    .edu-item span,
+    .awards li {
+      font-size: 8.5pt;
+      color: var(--muted);
+    }
+
+    .awards {
+      padding-left: 14px;
+      margin: 0;
+    }
+
+    .awards li { margin-bottom: 2px; }
+
+    .footer-line {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--rule);
+      font-size: 8.5pt;
+      color: var(--light);
+    }
+
+    .footer-line a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .page-break {
+      break-before: page;
+      padding-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+
+    <header class="header">
+      <h1>Pavan Kumar Dharmavaram Giridhar</h1>
+      <p class="tagline">Documentation Platform and Enablement Leader</p>
+      <div class="contact">
+        <span>Hyderabad, Telangana, India</span>
+        <span>+91 9010549909</span>
+        <span>pavandg2006@gmail.com</span>
+        <a href="https://www.linkedin.com/in/pavan-kumar-dharmavaram-giridhar/">linkedin.com/in/pavan-kumar-dharmavaram-giridhar</a>
+        <a href="https://pavandg.github.io/pavankumar-portfolio/">pavandg.github.io/pavankumar-portfolio</a>
+      </div>
+    </header>
+
+    <section class="summary">
+      <h2>Professional Summary</h2>
+      <p>
+        Documentation platform and enablement leader with <strong>13.5+ years</strong> driving scalable
+        documentation and customer adoption across enterprise software and cybersecurity platforms.
+        Proven track record building modular, automated documentation ecosystems aligned with product
+        releases and customer success outcomes.
+      </p>
+      <p>
+        Currently <strong>manage Technical Publications at Swimlane</strong> — a team of two writers,
+        release deliverables, and documentation platform operations. Leverage AI-assisted workflows and
+        code-level analysis to automate delivery and improve technical accuracy.
+      </p>
+    </section>
+
+    <section>
+      <h2>Core Capabilities</h2>
+      <ul class="caps-grid">
+        <li>Documentation platform strategy and architecture</li>
+        <li>Technical publications team leadership</li>
+        <li>Docs-as-Code and modular documentation systems</li>
+        <li>Documentation automation and publishing pipelines</li>
+        <li>Product release documentation ownership</li>
+        <li>AI-assisted documentation automation</li>
+        <li>Code analysis for documentation accuracy</li>
+        <li>Cross-functional collaboration (Product, Engineering, Support)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tools and Technologies</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <strong>Authoring</strong>
+          <span>Archbee, MadCap Flare, Sphinx, FrameMaker, Markdown, reST, DITA</span>
+        </div>
+        <div class="skill-group">
+          <strong>Automation</strong>
+          <span>GitHub, GitLab, Jenkins, GitHub Actions, Python, Perforce</span>
+        </div>
+        <div class="skill-group">
+          <strong>Workflow</strong>
+          <span>JIRA, Confluence, Cursor, BugDB</span>
+        </div>
+        <div class="skill-group">
+          <strong>Other</strong>
+          <span>SnagIt, Visio, Microsoft Office, Google Workspace</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Professional Experience</h2>
+
+      <article class="job">
+        <div class="job-header">
+          <span class="job-company">Swimlane Automation India Pvt Ltd</span>
+          <span class="job-location">Hyderabad, India</span>
+        </div>
+        <div class="job-role-row">
+          <span class="job-role">Manager — Technical Publications</span>
+          <span class="job-dates">April 2025 – Present</span>
+        </div>
+        <p class="job-intro">
+          Lead documentation strategy and execution for Swimlane's security automation platform.
+        </p>
+        <p class="sub-label">Key contributions</p>
+        <ul>
+          <li><strong>Manage a team of 2 technical writers;</strong> own end-to-end customer documentation for docs.swimlane.com — Turbine User Guide, release notes, solutions guides (AI SOC), and Hero AI updates.</li>
+          <li><strong>Led MadCap Flare → Archbee migration</strong> (~80% cost reduction; ~$26K to ~$5.6K/year) with two months pre-production validation and zero release gaps.</li>
+          <li><strong>Automated documentation for 428 connectors</strong> from repository metadata — estimated 40–60+ person-months saved; delivered 40+ authentication guides.</li>
+          <li>Shipped <strong>customer-friendly connector changelog automation</strong> in the Content Library; back-updated full release history.</li>
+          <li>Resolved duplicate marketplace categories via <strong>AI-assisted investigation and AppDirect API cleanup</strong> (38 → 17 canonical categories).</li>
+          <li>Established Git-based Tech Pubs workflow, Cursor/Archbee MCP tooling, release validation, and code-aware doc drift detection.</li>
+          <li>Own end-to-end release publishing validation, rollback coordination, and post-release verification.</li>
+        </ul>
+        <div class="job-role-row" style="margin-top: 8px;">
+          <span class="job-role">Senior Technical Writer</span>
+          <span class="job-dates">March 2024 – March 2025</span>
+        </div>
+        <ul>
+          <li>Authored core product documentation; established known-issues and release documentation processes.</li>
+          <li>Led migration planning and connector documentation automation from repository metadata.</li>
+          <li>Reduced documentation workload on product and engineering through reusable templates and workflows.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-header">
+          <span class="job-company">Synopsys India Pvt Ltd</span>
+          <span class="job-location">Hyderabad, India</span>
+        </div>
+        <div class="job-role-row">
+          <span class="job-role">Staff Technical Writer</span>
+          <span class="job-dates">May 2015 – March 2024</span>
+        </div>
+        <p class="sub-label">Key contributions</p>
+        <ul>
+          <li>Authored hardware and software documentation — datasheets, programming guides, integration guides, and release documentation.</li>
+          <li>Automated publishing workflows using Jenkins and reStructuredText; led DITA modernization from legacy formats.</li>
+          <li>Conducted documentation quality audits across global engineering release cycles.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-header">
+          <span class="job-company">Oracle India Pvt Ltd</span>
+          <span class="job-location">Hyderabad, India</span>
+        </div>
+        <div class="job-role-row">
+          <span class="job-role">Associate Technical Writer</span>
+          <span class="job-dates">September 2014 – May 2015</span>
+        </div>
+        <ul>
+          <li>Managed documentation delivery for Oracle Documaker Suite; improved navigation and usability.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-header">
+          <span class="job-company">Dell India R&D Center</span>
+          <span class="job-location">Bangalore, India</span>
+        </div>
+        <div class="job-role-row">
+          <span class="job-role">Technical Writer Analyst</span>
+          <span class="job-dates">January 2013 – September 2014</span>
+        </div>
+        <ul>
+          <li>Delivered release notes and user documentation for Dell E-Support and OpenManage Mobile; automated release note generation.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-header">
+          <span class="job-company">Jyopa Connexions (Contract) — Dell India</span>
+          <span class="job-location"></span>
+        </div>
+        <div class="job-role-row">
+          <span class="job-role">Technical Writer (Contract)</span>
+          <span class="job-dates">November 2012 – January 2013</span>
+        </div>
+        <ul>
+          <li>Supported enterprise documentation projects across Dell products.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="edu-item">
+        <strong>Bachelor of Technology (Information Technology)</strong><br />
+        <span>JNTU, India — 2012 — GPA: 6.8</span>
+      </div>
+      <div class="edu-item">
+        <span>Intermediate (MPC), Telangana Board — GPA: 8.3 · SSC, Telangana — GPA: 8.3</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Awards and Recognition</h2>
+      <ul class="awards">
+        <li>Publication Excellence Award — structured content modernization initiative.</li>
+        <li>Multiple Spot Bonuses — automation contributions and documentation quality improvements.</li>
+        <li>Leadership recognition for docs.swimlane.com migration; feedback from executive leadership (CEO, COO, VP of Engineering) and peers across Support, Field, and Engineering.</li>
+      </ul>
+    </section>
+
+    <p class="footer-line">Portfolio: <a href="https://pavandg.github.io/pavankumar-portfolio/">pavandg.github.io/pavankumar-portfolio</a></p>
+
+  </div>
+</body>
+</html>
