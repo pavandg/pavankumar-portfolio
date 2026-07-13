@@ -1,0 +1,66 @@
+---
+import PostLayout from "../../layouts/PostLayout.astro";
+---
+
+<PostLayout
+  title="DITA from FrameMaker: Two Schools of Thought"
+  date="2019"
+  summary="Comparing two approaches to DITA conversion from unstructured FrameMaker, and why full conversion worked better for content reuse."
+>
+
+<p>
+  When a customer required documentation source in DITA format alongside PDFs, with ongoing
+  updates over two years, we had to decide how to handle the conversion from unstructured
+  FrameMaker. Our research led to two distinct approaches.
+</p>
+
+<h2>The Two Approaches</h2>
+
+<h3>Approach 1: Maintain FrameMaker, Export DITA Per Release</h3>
+
+<ol>
+  <li>Convert unstructured FrameMaker to structured FrameMaker</li>
+  <li>Create mapping tables to convert structured FrameMaker to DITA each release</li>
+  <li>Run FrameMaker scripts to clean up the DITA output</li>
+</ol>
+
+<p>A sister team within the organization followed this approach. It works well when the DITA
+deliverable is purely a customer format requirement and there is no internal need for content reuse.</p>
+
+<h3>Approach 2: Convert Fully to DITA</h3>
+
+<ol>
+  <li>Use a third-party migration service (Stilo Migrate) for the initial unstructured-to-DITA conversion</li>
+  <li>Handle pre-conversion and post-conversion cleanup</li>
+  <li>Continue using DITA as the primary authoring format for all subsequent work</li>
+</ol>
+
+<p>We chose this approach. Our internal content reuse requirement across product lines was the
+primary driver.</p>
+
+<h2>Why We Chose Full Conversion</h2>
+
+<ul>
+  <li><strong>Content reuse</strong>: DITA's topic-based architecture enabled sharing content across product lines, which was impossible with unstructured FrameMaker</li>
+  <li><strong>Long-term investment</strong>: The customer required two years of ongoing DITA updates. Per-release exports would mean running the conversion process every cycle</li>
+  <li><strong>Single source of truth</strong>: Maintaining two parallel sources (FrameMaker + DITA) creates drift and quality risks</li>
+</ul>
+
+<h2>Challenges We Encountered</h2>
+
+<ul>
+  <li><strong>Object management</strong>: The number of DITA topics and maps after conversion was significantly larger than the FrameMaker book structure. A CCMS would help at scale</li>
+  <li><strong>Editor investment</strong>: We needed a DITA-aware XML editor. We continued using FrameMaker as the XML editor</li>
+  <li><strong>Repository limitations</strong>: With Perforce, we could not selectively check out individual topics. A CCMS would solve this</li>
+</ul>
+
+<h2>How to Choose</h2>
+
+<ul>
+  <li>If DITA is purely a <strong>delivery format</strong> and you have no content reuse needs, Approach 1 (maintain FrameMaker, export per release) is simpler</li>
+  <li>If you need <strong>content reuse across products</strong> or anticipate long-term DITA authoring, Approach 2 (full conversion) is the better investment despite higher upfront cost</li>
+</ul>
+
+<p>There is no universally correct approach. The decision depends on whether DITA is a delivery format or an authoring strategy.</p>
+
+</PostLayout>

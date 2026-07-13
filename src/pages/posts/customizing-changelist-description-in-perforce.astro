@@ -1,0 +1,81 @@
+---
+import PostLayout from "../../layouts/PostLayout.astro";
+
+const content = `
+<p>
+  To improve traceability of documentation commits in Perforce, we needed a structured changelist
+  description template for the team. The standard approach is to use P4 triggers, but our IT team
+  had restricted trigger usage on the Perforce server. We needed a client-side alternative.
+</p>
+
+<h2>The Solution</h2>
+
+<p>
+  A colleague wrote a client-side Python script using the <code>p4python</code> library that
+  creates a new numbered Perforce changelist with a pre-filled description template.
+</p>
+
+<pre><code>import ctypes
+from P4 import P4
+
+def main():
+    p4obj = P4()
+    p4obj.client = 'user_workspace'
+    p4obj.connect()
+    if not p4obj.connected():
+        ctypes.windll.user32.MessageBoxW(
+            0, "Unable to Connect", "Error", 0)
+        return
+
+    change = p4obj.fetch_change()
+    change._description = """
+    Fix for STAR:
+    Release (LCA/GA/version):
+    Customer Name?
+    Section that is changed in the source:
+    Creating PDF?
+    PDF Edition Number?
+    Technical Review Done?
+    """
+
+    ctypes.windll.user32.MessageBoxW(
+        0, *p4obj.save_change(change), "New P4 Change", 0)
+    p4obj.disconnect()
+
+if __name__ == '__main__':
+    main()</code></pre>
+
+<h2>Prerequisites</h2>
+
+<ul>
+  <li>Python 3 installed with environment variables configured</li>
+  <li><code>p4python</code> installed: <code>pip3 install p4python</code></li>
+</ul>
+
+<h2>How It Works</h2>
+
+<ol>
+  <li>The script connects to the Perforce server using the specified client workspace</li>
+  <li>It fetches a new changelist and populates the description with a structured template</li>
+  <li>The changelist is saved and the changelist number is displayed in a dialog box</li>
+  <li>Team members double-click the script to create a new changelist with the template pre-filled</li>
+</ol>
+
+<h2>Why This Matters</h2>
+
+<p>
+  Structured changelist descriptions improve documentation change traceability. When every commit
+  includes the release version, review status, and affected sections, it becomes much easier to
+  audit documentation changes during release cycles. The client-side approach works around server
+  restrictions without requiring IT involvement.
+</p>
+`;
+---
+
+<PostLayout
+  title="Customizing Changelist Description in Perforce"
+  date="2022"
+  summary="A client-side Python script to add structured changelist templates in Perforce when server-side triggers are restricted."
+>
+  <Fragment set:html={content} />
+</PostLayout>

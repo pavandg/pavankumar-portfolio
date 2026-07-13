@@ -7,85 +7,58 @@ const posts = [
     title: "How I Use AI for Documentation Operations",
     date: "March 2026",
     summary: "A practical walkthrough of using AI-assisted workflows for code-level analysis, documentation auditing, and release communication.",
-    external: false,
-  },
-];
-
-const externalPosts = [
-  {
-    url: "https://writeexperience.co/integrating-typesense-with-sphinx-readthedocs-template-a-step-by-step-guide/",
-    title: "Integrating Typesense with Sphinx ReadTheDocs Template",
-    date: "2023",
-    summary: "Step-by-step guide to replacing default Sphinx search with Typesense for better documentation search quality.",
   },
   {
-    url: "https://writeexperience.co/generate-html-from-rest-using-sphinx-and-github-actions/",
+    slug: "generate-html-from-rest-using-github-actions",
     title: "Generate HTML from reST Using Sphinx and GitHub Actions",
     date: "2023",
     summary: "How to build a CI/CD pipeline that automatically generates and deploys documentation from reStructuredText to AWS S3.",
   },
   {
-    url: "https://writeexperience.co/creating-a-captivating-documentation-homepage-with-restructuredtext/",
+    slug: "creating-documentation-homepage-with-restructuredtext",
     title: "Creating a Captivating Documentation Homepage with reStructuredText",
-    date: "2023",
+    date: "2021",
     summary: "A reusable template for building well-structured documentation homepages using sphinx-design cards, tabs, and grids.",
   },
   {
-    url: "https://writeexperience.co/adding-custom-menu-items-to-your-documentation-site-header-readthedocs-theme/",
+    slug: "adding-custom-menu-items-to-readthedocs-header",
     title: "Adding Custom Menu Items to Your Documentation Site Header",
     date: "2023",
     summary: "How to inject custom navigation menus into ReadTheDocs-themed documentation sites using JavaScript.",
   },
   {
-    url: "https://writeexperience.co/dita-from-framemaker/",
+    slug: "dita-from-framemaker",
     title: "DITA from FrameMaker: Two Schools of Thought",
-    date: "2023",
+    date: "2019",
     summary: "Comparing two approaches to DITA conversion from unstructured FrameMaker, and why full conversion worked better for content reuse.",
   },
   {
-    url: "https://writeexperience.co/customizing-changelist-description-in-perforce/",
+    slug: "customizing-changelist-description-in-perforce",
     title: "Customizing Changelist Description in Perforce",
-    date: "2023",
+    date: "2022",
     summary: "A client-side Python script to add structured changelist templates in Perforce when server-side triggers are restricted.",
   },
 ];
 ---
 
 <BaseLayout title="Writing | Pavan Kumar DG" activePage="writing">
-  <div class="container">
-    <section class="hero">
+  <div class="container--wide">
+    <section class="hero--page">
+      <p class="section__eyebrow">Blog</p>
       <h1 class="hero__title">Writing</h1>
       <p class="hero__subtitle">
         Lessons learned from building documentation systems at enterprise scale.
       </p>
     </section>
 
-    <section class="section">
-      <p class="section__label">New</p>
-      <h2>Recent Posts</h2>
-      <div class="card-grid">
+    <section class="section" style="padding-top: 0;">
+      <div class="card-grid card-grid--2">
         {posts.map((post) => (
           <a href={`/posts/${post.slug}`} class="card" style="text-decoration:none;">
             <p class="case-study-header__meta">{post.date}</p>
             <h3 class="card__title">{post.title}</h3>
             <p class="card__desc">{post.summary}</p>
             <span class="card__link">Read post &rarr;</span>
-          </a>
-        ))}
-      </div>
-    </section>
-
-    <section class="section">
-      <p class="section__label">writeexperience.co</p>
-      <h2>Documentation Engineering Blog</h2>
-      <p style="margin-bottom: 1.5rem;">Technical posts from my work on documentation infrastructure, publishing automation, and tooling.</p>
-      <div class="card-grid">
-        {externalPosts.map((post) => (
-          <a href={post.url} target="_blank" rel="noopener" class="card" style="text-decoration:none;">
-            <p class="case-study-header__meta">{post.date} &middot; writeexperience.co</p>
-            <h3 class="card__title">{post.title}</h3>
-            <p class="card__desc">{post.summary}</p>
-            <span class="card__link">Read on writeexperience.co &rarr;</span>
           </a>
         ))}
       </div>

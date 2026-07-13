@@ -3,88 +3,105 @@ import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
 ---
 
 <CaseStudyLayout
-  title="Marketplace Category Remediation"
-  summary="Identified and resolved duplicate category metadata across hundreds of marketplace connectors using AI-assisted code analysis and bulk automation."
+  title="Content Library Category Remediation"
+  summary="Human + AI collaboration to trace duplicate marketplace categories end-to-end, validate 400+ connector repos, and clean 21 stale AppDirect entries — 38 categories down to 17 in one session."
   date="March 2026"
   role="Investigation Lead / Remediation Owner"
-  tags={["Data Quality", "AI-Assisted Analysis", "Marketplace", "GitHub Automation"]}
+  tags={["Human + AI", "AppDirect API", "Data Quality", "Marketplace", "Cursor"]}
 >
 
 <h2>Problem</h2>
 
-<p>The product's Content Library displayed duplicate and inconsistent category names in the filter panel. For example:</p>
+<p>The internal Content Library showed duplicate and inconsistent category names in the filter panel — for example, "Communication" vs "Communication &amp; Collaboration", or "Endpoint Security &amp; Management" vs "Endpoint Management &amp; Security". The UI looked unpolished and made it harder for customers and internal teams to browse connectors by category.</p>
 
-<ul>
-  <li>"SIEM &amp; Log Management" and "SIEM and Log Management" appeared as separate categories</li>
-  <li>"Endpoint Security &amp; Management" and "Endpoint Security and Management" coexisted</li>
-  <li>"Identity &amp; Access Management" and "Identity Management" showed as distinct entries</li>
-</ul>
-
-<p>This created a confusing user experience where customers could not reliably filter connectors by category, and the marketplace appeared unpolished.</p>
+<p>Interestingly, the <strong>public marketplace looked clean</strong> while the <strong>internal library did not</strong> — a clue that the root cause was not only in connector source files.</p>
 
 <h2>My Role</h2>
 
-<p>I owned the investigation, root cause analysis, remediation plan, stakeholder communication, and execution of the fix across all affected connector repositories.</p>
+<p>I owned the investigation, root cause analysis, safety validation, and execution. AI (Cursor) handled scanning, scripting, and API enumeration at scale; I focused on decisions, verification, and what users would actually see after cleanup.</p>
 
 <h2>What I Did</h2>
 
+<h3>1. Traced category flow end-to-end</h3>
+
+<p>Using Cursor, I followed how categories move through the system:</p>
+
+<ul>
+  <li><code>connector.yaml</code> metadata in each connector repo</li>
+  <li>CI/CD publish pipeline</li>
+  <li>AppDirect marketplace backend</li>
+  <li>Content Library UI</li>
+</ul>
+
+<p>The canonical category list lives in <strong>turbine-sdk</strong> — that became the source of truth for what names should exist.</p>
+
+<h3>2. Scale analysis across 400+ repos</h3>
+
+<p>Instead of manually opening hundreds of repositories, AI helped write a script to compare <strong>last published</strong> vs <strong>current main</strong> across the connector org and surface mismatches.</p>
+
+<p>I then queried the AppDirect marketplace API directly to enumerate all <strong>38 live categories</strong> and cross-referenced them against the canonical SDK list.</p>
+
+<h3>3. Key discovery</h3>
+
+<ul>
+  <li>AppDirect <strong>stores categories historically</strong> and does not remove unused entries when connectors are republished</li>
+  <li>Fixing source metadata and republishing (21 PRs plus CI/CD runs) would still <strong>not</strong> remove stale categories from what users see</li>
+  <li><strong>Direct API cleanup</strong> was the only path to fix the internal Content Library UI</li>
+</ul>
+
+<h3>4. Safe cleanup</h3>
+
 <ol>
-  <li><strong>Investigated the root cause</strong> by using AI-assisted code analysis to trace how categories flow from connector metadata through the SDK to the marketplace UI. Identified that categories are stored as <code>keywords</code> in each connector's <code>connector.yaml</code> file, and the canonical category list was defined in the SDK but not enforced</li>
-  <li><strong>Mapped the discrepancies</strong> between the canonical category list (in the SDK) and actual connector metadata across the connector organization. Found that connectors created at different times used inconsistent naming (ampersands vs. spelled-out "and", abbreviations vs. full names)</li>
-  <li><strong>Built a remediation script</strong> that:
-    <ul>
-      <li>Iterated across all connector repositories</li>
-      <li>Read each connector's <code>connector.yaml</code></li>
-      <li>Mapped old/incorrect category names to canonical versions</li>
-      <li>Created pull requests with the corrected metadata</li>
-    </ul>
-  </li>
-  <li><strong>Managed the republishing workflow</strong> by determining that fixing the YAML alone was insufficient; connectors needed to be republished for the marketplace to reflect the corrected categories</li>
-  <li><strong>Communicated the plan and progress</strong> to my manager with clear write-ups of the problem scope, approach, and status at each stage</li>
+  <li>Reviewed all 38 live categories</li>
+  <li>Verified all 21 duplicate/stale entries had <strong>zero connectors</strong> tagged to them</li>
+  <li>Removed those entries via the AppDirect API</li>
 </ol>
 
 <h2>Constraints</h2>
 
 <ul>
-  <li>Hundreds of separate repositories to update (one per connector)</li>
-  <li>GitHub API rate limits restricted bulk operations</li>
-  <li>Republishing required marketplace admin credentials and coordination with the team</li>
-  <li>Some connectors required manual category assignment because their original categories did not map cleanly to the canonical list</li>
+  <li>400+ connector repositories — manual inspection was not feasible</li>
+  <li>Republishing alone would not fix historical AppDirect category accumulation</li>
+  <li>API deletion required proof that no connectors were attached to a category before removal</li>
+  <li>Work went beyond the Tech Pubs role — marketplace data quality with customer-facing UI impact</li>
 </ul>
 
 <h2>Outcomes</h2>
 
-<h3>Customer Impact</h3>
+<h3>Customer and product impact</h3>
 <ul>
-  <li>Eliminated duplicate categories from the Content Library filter panel</li>
-  <li>Improved connector discoverability for customers browsing by category</li>
-  <li>Cleaned up the marketplace's professional appearance</li>
+  <li><strong>17 clean, canonical categories</strong> — zero duplicates in the Content Library</li>
+  <li>Cleaner, more professional browsing experience</li>
+  <li>Completed in <strong>one working session</strong> instead of an estimated multi-day cross-repo investigation</li>
 </ul>
 
-<h3>Process Impact</h3>
+<h3>Process impact</h3>
 <ul>
-  <li>Established a validated category mapping that prevents future drift</li>
-  <li>Demonstrated a repeatable pattern for bulk metadata remediation across large connector catalogs</li>
-  <li>Identified that the SDK's category enum was outdated and needed alignment with the canonical list</li>
+  <li>Established a repeatable pattern: trace flow → script at scale → validate via API → human safety checks</li>
+  <li>Demonstrated when AI should do heavy lifting (scanning, scripts, API calls) and when a human must own validation</li>
 </ul>
 
-<h2>AI-Assisted Workflow</h2>
+<h2>Human + AI split</h2>
 
-<p>This project used AI-assisted code analysis (Cursor) throughout:</p>
-
-<ul>
-  <li><strong>Root cause tracing</strong>: AI helped navigate the SDK codebase to locate where categories are defined, validated, and consumed</li>
-  <li><strong>Impact assessment</strong>: AI helped enumerate all connector repositories using wrong category names and classify the discrepancies</li>
-  <li><strong>Script generation</strong>: AI assisted in building the bulk remediation and PR-creation scripts</li>
-  <li><strong>Stakeholder communication</strong>: AI helped draft clear, non-technical write-ups for manager communication</li>
-</ul>
+<table class="path-table" style="margin: 1.5rem 0;">
+  <tbody>
+    <tr>
+      <th>AI (Cursor)</th>
+      <td>End-to-end code tracing, repo comparison scripts, AppDirect API enumeration, bulk analysis across 400+ repos</td>
+    </tr>
+    <tr>
+      <th>Human (me)</th>
+      <td>Canonical source decisions, zero-connector verification before deletion, stakeholder communication, safety gates</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Lessons Learned</h2>
 
 <ul>
-  <li>Data quality problems in marketplaces are often invisible until a customer (or team member) notices the filter panel; proactive auditing is worthwhile</li>
-  <li>Fixing metadata at the source is always the right approach, even when it means updating hundreds of repositories instead of patching the UI</li>
-  <li>AI-assisted code analysis dramatically accelerated the investigation; tracing category flow through SDK source code would have taken days manually</li>
+  <li>When public and internal surfaces disagree, trace the full pipeline before assuming the fix is at the source file</li>
+  <li>Historical marketplace backends can accumulate stale metadata that republishing never cleans up</li>
+  <li>Pairing with AI turns cross-repo investigations from days into a single focused session — if you validate every destructive step yourself</li>
 </ul>
 
 </CaseStudyLayout>

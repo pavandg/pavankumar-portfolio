@@ -1,0 +1,72 @@
+---
+import PostLayout from "../../layouts/PostLayout.astro";
+
+const content = `
+<p>
+  A well-organized documentation site header is essential for navigation. If you are using the
+  ReadTheDocs theme and need to add custom menu items (product links, related docs, dropdown menus),
+  you can dynamically inject them using JavaScript.
+</p>
+
+<h2>The Approach</h2>
+
+<p>
+  Inject custom HTML elements into the page header on load. This avoids modifying the Sphinx theme
+  source code directly and keeps customizations maintainable across theme updates.
+</p>
+
+<pre><code>document.addEventListener('DOMContentLoaded', function () {
+  var customHeaderCode = \\\`
+    &lt;div class="header"&gt;
+      &lt;div class="header-right"&gt;
+        &lt;a href="/index.html"&gt;Documentation Home&lt;/a&gt;
+        &lt;div class="dropdown"&gt;
+          &lt;button class="dropbtn"&gt;Related Documents&lt;/button&gt;
+          &lt;div class="dropdown-content"&gt;
+            &lt;a href="/getting_started/index.html"&gt;Getting Started&lt;/a&gt;
+            &lt;a href="/getting_started/faqs.html"&gt;FAQs&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  \\\`;
+
+  var customHeaderDiv = document.createElement('div');
+  customHeaderDiv.innerHTML = customHeaderCode;
+  document.body.insertBefore(customHeaderDiv, document.body.firstChild);
+});</code></pre>
+
+<h2>How to Use</h2>
+
+<ol>
+  <li>Save the JavaScript file in your <code>_static/js</code> folder in your reST source directory</li>
+  <li>Reference it in your <code>conf.py</code> so Sphinx includes it in the build</li>
+  <li>Build the documentation site with <code>sphinx-build</code></li>
+</ol>
+
+<h2>How It Works</h2>
+
+<ul>
+  <li>The script waits for the DOM to fully load before executing</li>
+  <li>It creates a new <code>div</code> element containing the custom header HTML</li>
+  <li>The element is inserted at the top of the document body, appearing above all other content</li>
+  <li>Links, dropdowns, and styling are fully customizable within the template string</li>
+</ul>
+
+<h2>When to Use This</h2>
+
+<p>
+  This approach works well when you need cross-product navigation links in a documentation site
+  that serves multiple products or product versions. It keeps the navigation consistent without
+  requiring theme modifications that would break on updates.
+</p>
+`;
+---
+
+<PostLayout
+  title="Adding Custom Menu Items to Your Documentation Site Header"
+  date="2023"
+  summary="How to inject custom navigation menus into ReadTheDocs-themed documentation sites using JavaScript."
+>
+  <Fragment set:html={content} />
+</PostLayout>

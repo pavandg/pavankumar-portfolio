@@ -11,12 +11,12 @@ const { title, date, summary } = Astro.props;
 ---
 
 <BaseLayout title={`${title} | Pavan Kumar DG`} description={summary} activePage="writing">
-  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+  <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
     <a href="/writing" class="back-link">&larr; All Posts</a>
-    <header style="margin-bottom: 2.5rem;">
+    <header class="case-study-header">
       <p class="case-study-header__meta">{date}</p>
       <h1>{title}</h1>
-      <p style="font-size: 1.05rem; margin-top: 0.5rem;">{summary}</p>
+      <p style="font-size: 1.05rem; margin-top: 0.5rem; line-height: 1.7;">{summary}</p>
     </header>
     <article class="prose">
       <slot />

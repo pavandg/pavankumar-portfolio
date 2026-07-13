@@ -13,16 +13,29 @@ const { title, summary, date, tags, role } = Astro.props;
 ---
 
 <BaseLayout title={`${title} | Pavan Kumar DG`} description={summary} activePage="work">
-  <div class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+  <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
     <a href="/work" class="back-link">&larr; All Work</a>
+
     <div class="case-study-header">
-      <p class="case-study-header__meta">{date} &middot; {role}</p>
-      <h1>{title}</h1>
-      <p style="font-size: 1.1rem; margin-top: 0.75rem;">{summary}</p>
-      <div class="tags">
-        {tags.map((tag) => <span class="tag">{tag}</span>)}
+      <div style="display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start;">
+        <div>
+          <p class="case-study-header__meta">{role}</p>
+          <h1>{title}</h1>
+          <p style="font-size: 1.08rem; margin-top: 0.75rem; line-height: 1.7;">{summary}</p>
+          <div class="tags">
+            {tags.map((tag) => <span class="tag">{tag}</span>)}
+          </div>
+        </div>
+        <div class="about-section" style="min-width: 180px; margin-top: 0.5rem;">
+          <h3 style="font-size: 0.85rem; margin-bottom: 0.75rem;">Details</h3>
+          <ul style="font-size: 0.82rem;">
+            <li>{date}</li>
+            <li>{role}</li>
+          </ul>
+        </div>
       </div>
     </div>
+
     <article class="prose">
       <slot />
     </article>

@@ -1,98 +1,150 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const paths = [
+  { goal: "Evaluate me for a documentation leadership role", link: "/about#leadership", label: "Leadership & scope" },
+  { goal: "See platform, automation, and MCP work", link: "/work", label: "Work portfolio" },
+  { goal: "Understand how I use AI in Tech Pubs", link: "/posts/how-i-use-ai-for-docs-ops", label: "AI for docs operations" },
+  { goal: "Read a flagship case study", link: "/case-studies/techpubs-knowledge-center", label: "Knowledge center & automation" },
+  { goal: "Get in touch", link: "/contact", label: "Contact" },
+];
 ---
 
-<BaseLayout title="Pavan Kumar DG - Documentation Platform Leader" activePage="home">
-  <div class="container">
-    <section class="hero">
-      <span class="hero__label">Documentation Platform &amp; Enablement</span>
-      <h1 class="hero__title">I build scalable documentation systems for enterprise security platforms.</h1>
-      <p class="hero__subtitle">
-        13+ years delivering product documentation at scale. I combine content architecture,
-        automation, and AI-assisted workflows to improve customer self-service, reduce support
-        dependency, and accelerate release readiness.
+<BaseLayout title="Pavan Kumar DG — Documentation Platform Leader" activePage="home">
+  <div class="container--wide">
+
+    <header class="docs-intro">
+      <span class="docs-intro__badge">Technical Publications</span>
+      <h1>Documentation platform leader for <em>enterprise products</em></h1>
+      <p class="docs-intro__purpose">
+        I lead Technical Publications at Swimlane — a team of two writers and the systems behind
+        customer documentation: CMS architecture, release pipelines, validation tooling, and
+        AI-assisted writer workflows so customers get accurate self-service docs at every release.
       </p>
-    </section>
+    </header>
 
-    <section class="section">
-      <div class="metrics">
-        <div class="metric">
-          <div class="metric__value">400+</div>
-          <div class="metric__label">Connectors Documented</div>
-        </div>
-        <div class="metric">
-          <div class="metric__value">~80%</div>
-          <div class="metric__label">Platform Cost Reduction</div>
-        </div>
-        <div class="metric">
-          <div class="metric__value">40+</div>
-          <div class="metric__label">Auth Guides Delivered</div>
-        </div>
-        <div class="metric">
-          <div class="metric__value">13.5+</div>
-          <div class="metric__label">Years of Experience</div>
-        </div>
-      </div>
-    </section>
+    <div class="path-block">
+      <div class="path-block__header">Choose your path</div>
+      <table class="path-table">
+        <tbody>
+          {paths.map((row) => (
+            <tr>
+              <th>{row.goal}</th>
+              <td>
+                <a href={row.link}>{row.label} &rarr;</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
-    <section class="section">
-      <p class="section__label">Featured Work</p>
-      <h2>Selected Projects</h2>
-      <div class="card-grid">
-        <a href="/case-studies/docs-platform-migration" class="card" style="text-decoration:none;">
-          <span class="card__tag">Platform Migration</span>
-          <h3 class="card__title">Documentation Platform Migration</h3>
-          <p class="card__desc">Led the end-to-end migration of docs.swimlane.com from MadCap Flare to Archbee, reducing costs by ~80% while improving search, AI-assisted discovery, and content modularity.</p>
-          <span class="card__link">Read case study &rarr;</span>
+    <section>
+      <p class="section__eyebrow">Workflow at a glance</p>
+      <h2 style="font-size:1.35rem;margin-bottom:0.25rem;">How I think about documentation delivery</h2>
+      <p style="font-size:0.9rem;margin-bottom:0;">The same pipeline I build for product docs — applied to how I lead Tech Pubs.</p>
+
+      <div class="workflow-strip">
+        <a href="/work#plan" class="workflow-step" style="text-decoration:none;color:inherit;">
+          <div class="workflow-step__num">01</div>
+          <div class="workflow-step__label">Plan</div>
+          <p class="workflow-step__desc">Platform strategy &amp; information architecture</p>
         </a>
-        <a href="/case-studies/connector-docs-automation" class="card" style="text-decoration:none;">
-          <span class="card__tag">Automation</span>
-          <h3 class="card__title">Connector Documentation Automation</h3>
-          <p class="card__desc">Automated documentation generation for 400+ security integrations by building a source-driven pipeline from connector YAML metadata.</p>
-          <span class="card__link">Read case study &rarr;</span>
+        <a href="/work#build" class="workflow-step" style="text-decoration:none;color:inherit;">
+          <div class="workflow-step__num">02</div>
+          <div class="workflow-step__label">Build</div>
+          <p class="workflow-step__desc">Pipelines, automation &amp; knowledge systems</p>
         </a>
-        <a href="/case-studies/marketplace-category-remediation" class="card" style="text-decoration:none;">
-          <span class="card__tag">Data Quality</span>
-          <h3 class="card__title">Marketplace Category Remediation</h3>
-          <p class="card__desc">Identified and resolved duplicate category metadata across hundreds of marketplace connectors using AI-assisted code analysis and bulk automation.</p>
-          <span class="card__link">Read case study &rarr;</span>
+        <a href="/work#assure" class="workflow-step" style="text-decoration:none;color:inherit;">
+          <div class="workflow-step__num">03</div>
+          <div class="workflow-step__label">Assure</div>
+          <p class="workflow-step__desc">Validation, auditing &amp; release quality</p>
         </a>
-        <a href="/case-studies/release-docs-reliability" class="card" style="text-decoration:none;">
-          <span class="card__tag">Release Engineering</span>
-          <h3 class="card__title">Release Documentation Reliability</h3>
-          <p class="card__desc">Improved release notes quality, docs accuracy auditing, and changelog automation to reduce customer-facing documentation defects.</p>
-          <span class="card__link">Read case study &rarr;</span>
-        </a>
-        <a href="/case-studies/synopsys-docs-modernization" class="card" style="text-decoration:none;">
-          <span class="card__tag">Docs Infrastructure</span>
-          <h3 class="card__title">Documentation Modernization at Synopsys</h3>
-          <p class="card__desc">Led DITA modernization from FrameMaker, built CI/CD publishing with GitHub Actions and Sphinx, and integrated Typesense search across processor platform docs.</p>
-          <span class="card__link">Read case study &rarr;</span>
+        <a href="/work#operate" class="workflow-step" style="text-decoration:none;color:inherit;">
+          <div class="workflow-step__num">04</div>
+          <div class="workflow-step__label">Operate</div>
+          <p class="workflow-step__desc">Publish, maintain &amp; improve at scale</p>
         </a>
       </div>
     </section>
 
-    <section class="section">
-      <p class="section__label">Background</p>
-      <h2>Where I Have Worked</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3 class="card__title">Swimlane</h3>
-          <p class="card__desc">Manager, Technical Publications. Led documentation strategy, platform migration, and connector docs automation for a security automation platform.</p>
-        </div>
-        <div class="card">
-          <h3 class="card__title">Synopsys</h3>
-          <p class="card__desc">Staff Technical Writer. Delivered large-scale hardware and software documentation across multiple processor platforms and release cycles.</p>
-        </div>
-        <div class="card">
-          <h3 class="card__title">Oracle</h3>
-          <p class="card__desc">Associate Technical Writer. Managed documentation delivery for the Oracle Documaker Suite.</p>
-        </div>
-        <div class="card">
-          <h3 class="card__title">Dell</h3>
-          <p class="card__desc">Technical Writer Analyst. Delivered release notes, installation guides, and user documentation for enterprise support products.</p>
-        </div>
+    <div class="metrics-bar">
+      <div class="metric">
+        <span class="metric__value">13.5+</span>
+        <span class="metric__label">Years</span>
       </div>
+      <div class="metric">
+        <span class="metric__value">428</span>
+        <span class="metric__label">Connectors automated</span>
+      </div>
+      <div class="metric">
+        <span class="metric__value">~80%</span>
+        <span class="metric__label">CMS cost reduced</span>
+      </div>
+      <div class="metric">
+        <span class="metric__value">4</span>
+        <span class="metric__label">Companies</span>
+      </div>
+    </div>
+
+    <section>
+      <p class="section__eyebrow">Flagship project</p>
+      <a href="/case-studies/techpubs-knowledge-center" class="featured-study">
+        <div>
+          <p class="featured-study__meta">Swimlane · 2025–2026</p>
+          <h3>Tech Pubs Knowledge Center</h3>
+          <p>
+            A Cursor-native documentation workspace with Archbee MCP integration,
+            code-aware stale-doc detection, release validation CLI, and AI-assisted
+            writer workflows.
+          </p>
+          <span class="featured-study__link">Read the full case study &rarr;</span>
+        </div>
+        <div class="capability-grid" style="margin:0;grid-template-columns:1fr;">
+          <div class="capability">
+            <h3>Archbee MCP</h3>
+            <p>Pull, validate, push, and detect stale docs from product repo changes.</p>
+          </div>
+          <div class="capability">
+            <h3>Git draft pipeline</h3>
+            <p>One Jira story, one branch, one PR — with Rulebook lint before review.</p>
+          </div>
+          <div class="capability">
+            <h3>Code-validated releases</h3>
+            <p>UI labels and behavior checked against release branches before publish.</p>
+          </div>
+        </div>
+      </a>
     </section>
+
+    <div class="capability-grid">
+      <div class="capability">
+        <h3>Platform &amp; migration</h3>
+        <p>Led docs.swimlane.com from MadCap Flare to Archbee with major cost reduction and improved search.</p>
+      </div>
+      <div class="capability">
+        <h3>Automation at scale</h3>
+        <p>Connector documentation pipeline for 400+ integrations from source YAML metadata.</p>
+      </div>
+      <div class="capability">
+        <h3>Release ownership</h3>
+        <p>Hero AI, AI SOC solution guides, release notes, and documentation accuracy auditing.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="callout__icon">Note</span>
+      <p>
+        <strong>Confidentiality:</strong> Case studies use generalized language. No proprietary code,
+        internal screenshots, customer names, or confidential metrics are included.
+      </p>
+    </div>
+
+    <section class="cta-band">
+      <h2>Open to documentation leadership conversations.</h2>
+      <p>Platform strategy, Tech Pubs management, and AI-assisted documentation operations.</p>
+      <a href="/contact" class="btn btn--primary">Contact me</a>
+    </section>
+
   </div>
 </BaseLayout>

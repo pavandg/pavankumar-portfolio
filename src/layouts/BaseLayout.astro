@@ -23,13 +23,13 @@ const { title, description = "Documentation Platform and Enablement Leader", act
   <body>
     <nav class="nav">
       <div class="nav__inner">
-        <a href="/" class="nav__logo">Pavan Kumar DG</a>
+        <a href="/" class="nav__brand">Pavan Kumar DG</a>
         <ul class="nav__links">
           <li><a href="/" class={activePage === "home" ? "active" : ""}>Home</a></li>
           <li><a href="/work" class={activePage === "work" ? "active" : ""}>Work</a></li>
           <li><a href="/writing" class={activePage === "writing" ? "active" : ""}>Writing</a></li>
           <li><a href="/about" class={activePage === "about" ? "active" : ""}>About</a></li>
-          <li><a href="/contact" class={activePage === "contact" ? "active" : ""}>Contact</a></li>
+          <li><a href="/contact" class={activePage === "contact" ? "active nav__cta" : "nav__cta"}>Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -39,13 +39,18 @@ const { title, description = "Documentation Platform and Enablement Leader", act
     </main>
 
     <footer class="footer">
-      <div class="container">
-        <p>
+      <div class="footer__inner">
+        <div>
+          <span class="footer__name">Pavan Kumar DG</span>
+          <span class="footer__tagline">Documentation platform leader · Hyderabad, India</span>
+        </div>
+        <div class="footer__links">
           <a href="https://www.linkedin.com/in/pavan-kumar-dharmavaram-giridhar/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="mailto:pavandg2006@gmail.com">Email</a>
-        </p>
-        <p style="margin-top: 0.75rem;">Selected details are generalized for confidentiality.</p>
+          <a href="/work">Work</a>
+        </div>
       </div>
+      <p class="footer__disclaimer">© {new Date().getFullYear()} · Selected details generalized for confidentiality.</p>
     </footer>
   </body>
 </html>

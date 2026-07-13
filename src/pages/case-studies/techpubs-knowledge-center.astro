@@ -1,0 +1,134 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+---
+
+<CaseStudyLayout
+  title="Tech Pubs Knowledge Center and Documentation Automation"
+  summary="Built a Cursor-native documentation workspace with Archbee MCP integration, code-aware stale-doc detection, release validation tooling, and an AI-assisted writer workflow for enterprise security product releases."
+  date="2025 - 2026"
+  role="Manager, Technical Publications"
+  tags={["Docs Automation", "MCP", "Release Engineering", "AI-Assisted Workflow", "Platform Design"]}
+>
+
+<h2>Problem</h2>
+
+<p>
+  After migrating the customer documentation platform to a modern CMS, the team still faced
+  operational friction at release time:
+</p>
+
+<ul>
+  <li><strong>No single source of truth for drafts</strong> — writers worked across Archbee, Confluence, local files, and product repos without a consistent Git-based workflow</li>
+  <li><strong>Doc drift</strong> — product code changed on release branches, but nobody systematically flagged which documentation sections became stale</li>
+  <li><strong>Manual validation</strong> — style guide compliance, broken links, and UI label accuracy were checked ad hoc before publish</li>
+  <li><strong>Scaling pain</strong> — major releases (Hero AI, AI SOC solution, platform features) required dozens of coordinated topics with no repeatable pipeline</li>
+  <li><strong>Onboarding friction</strong> — new writers needed tribal knowledge to pull from Archbee, validate against code, and open PRs correctly</li>
+</ul>
+
+<h2>My Role</h2>
+
+<p>
+  As Manager of Technical Publications, I designed and implemented the knowledge center repository,
+  automation tooling, writer workflows, and Cursor agent integration. I also established the
+  team process documentation and validation gates used before Archbee publish.
+</p>
+
+<h2>What I Built</h2>
+
+<h3>1. Knowledge Center Repository</h3>
+
+<p>
+  Created a dedicated Git repository as the team's Cursor workspace. Release drafts live under
+  versioned folders; live Archbee content is pulled locally for comparison only (never committed
+  in bulk). Each Jira story maps to one branch, one PR, and one topic when possible.
+</p>
+
+<ul>
+  <li>Release draft structure for Turbine User Guide and Solutions guide topics</li>
+  <li>Documentation Rulebook and Cursor rules for consistent style enforcement</li>
+  <li>Team setup guides, writer prompts, and PR workflow documentation</li>
+  <li>Process sync to Confluence for leadership visibility</li>
+</ul>
+
+<h3>2. Archbee MCP Server</h3>
+
+<p>
+  Built a Model Context Protocol (MCP) server so Cursor agents can interact with published
+  documentation programmatically:
+</p>
+
+<ul>
+  <li><strong>Pull and push</strong> — sync individual topics or full guide exports from Archbee</li>
+  <li><strong>Validate</strong> — check drafts against the Documentation Rulebook before publish</li>
+  <li><strong>Detect stale docs</strong> — scan product repo git history, map code paths to doc sections via a configurable doc map, and report which topics may need review</li>
+  <li><strong>Content gap analysis</strong> — identify missing or under-documented product areas</li>
+</ul>
+
+<h3>3. Release Validation Tooling</h3>
+
+<p>Node.js CLI tools for pre-PR and pre-publish checks:</p>
+
+<ul>
+  <li>Release draft validation — frontmatter, relative links, Rulebook lint, addendum shape</li>
+  <li>Compare release drafts against local Archbee baseline pulls</li>
+  <li>PR validation for release branches</li>
+  <li>Frontmatter backfill for release tracking</li>
+  <li>Combined PDF generation for solution guide review packages</li>
+</ul>
+
+<h3>4. AI-Assisted Writer Workflow</h3>
+
+<p>
+  Integrated Cursor skills and standardized prompts so writers can audit docs against the
+  product codebase, re-base drafts from live Archbee, and run validation before review:
+</p>
+
+<ul>
+  <li>Code-validated UI labels and behavior checks against release branches</li>
+  <li>Doc drift detection tied to swimlane, hero-ai, and custom-widgets repos</li>
+  <li>Jira investigation integration for release notes and ticket research</li>
+  <li>Repeatable prompts for draft, audit, pull baseline, and pre-PR check</li>
+</ul>
+
+<h2>Constraints</h2>
+
+<ul>
+  <li>Archbee API keys and product repo paths must stay out of committed files</li>
+  <li>Full guide exports are large — only changed topics belong in Git PRs</li>
+  <li>Automation assists writers; it does not replace editorial judgment or product sign-off</li>
+  <li>All portfolio-facing descriptions use generalized language — no proprietary internals</li>
+</ul>
+
+<h2>Outcomes</h2>
+
+<h3>Team and Process</h3>
+<ul>
+  <li>Moved from ad hoc release writing to a repeatable, Git-based draft pipeline</li>
+  <li>Reduced onboarding time with documented setup, prompts, and agent routing</li>
+  <li>Established validation gates before Archbee publish</li>
+</ul>
+
+<h3>Release Scale</h3>
+<ul>
+  <li>Supported large 26.2.0 draft portfolios — Hero AI, Transform Data, HTTP/Webhook, AI SOC solution, Playbook Builder, and platform administration topics</li>
+  <li>Solution guide PDF builds and combined review packages for AI SOC releases</li>
+  <li>Release notes workflow integrated with Jira and Confluence</li>
+</ul>
+
+<h3>Quality</h3>
+<ul>
+  <li>Code-to-doc mapping surfaces stale topics when product areas change</li>
+  <li>Rulebook lint catches style violations before human review</li>
+  <li>Live Archbee re-base step reduces drift between published and in-flight drafts</li>
+</ul>
+
+<h2>Lessons Learned</h2>
+
+<ul>
+  <li>Documentation automation works best as a <strong>pipeline</strong> (detect → validate → publish), not a one-shot content generator</li>
+  <li>MCP bridges the gap between AI agents and real publishing systems — writers stay in Cursor, docs stay in Archbee</li>
+  <li>Invest early in process docs and writer prompts; tooling alone does not change behavior</li>
+  <li>Keep Git PRs small (one ticket, one topic) even when releases are large</li>
+</ul>
+
+</CaseStudyLayout>

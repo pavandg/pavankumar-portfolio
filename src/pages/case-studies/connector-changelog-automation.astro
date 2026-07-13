@@ -1,0 +1,75 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+---
+
+<CaseStudyLayout
+  title="Connector Changelog Automation"
+  summary="Automated customer-friendly changelog and release notes in the Turbine Content Library — stripping Jira IDs and commit hashes, back-updating full history, and flowing every future connector release through the pipeline."
+  date="2025 - 2026"
+  role="Program Owner / Tech Pubs Lead"
+  tags={["Content Library", "Automation", "Customer Experience", "Release Notes"]}
+>
+
+<h2>Problem</h2>
+
+<p>Connector changelogs and release notes in the Turbine Content Library were populated with raw technical data from the release pipeline:</p>
+
+<ul>
+  <li>Jira ticket references (for example, SPT-XXXXX) with no customer context</li>
+  <li>Git commit IDs and engineer-facing commit messages</li>
+  <li>No clear description of what actually changed for someone integrating the connector</li>
+</ul>
+
+<p>Customers browsing connector updates in the Content Library could not understand what had changed. The connector team also spent time on manual cleanup after each release.</p>
+
+<h2>My Role</h2>
+
+<p>I led the Tech Pubs initiative to design and ship an automated flow that rewrites connector changelogs into customer-friendly language on every release — and back-updated existing release history so the catalog was consistent end-to-end.</p>
+
+<h2>What I Did</h2>
+
+<ol>
+  <li><strong>Defined the target experience</strong> — changelogs that describe customer-visible changes in plain language, without internal ticket numbers or commit identifiers</li>
+  <li><strong>Built the automated rewrite flow</strong> integrated with the existing connector release pipeline so every publish produces readable release notes without manual editing</li>
+  <li><strong>Back-updated full release history</strong> for initial connector cohorts so historical entries matched the new format, not just forward-looking releases</li>
+  <li><strong>Coordinated rollout</strong> with the connector team — starting with high-visibility integrations and expanding coverage across the catalog</li>
+  <li><strong>Announced and socialized</strong> the change internally so Support, Field, and connector engineering knew what to expect and how to give feedback</li>
+</ol>
+
+<h2>Initial rollout</h2>
+
+<p>The automation went live first for connectors including Zscaler, Zscaler Deception, Abnormal Security, Microsoft Defender, Trellix AX, Abuse URLhaus, Cynet, and ArcherIRM — with the pattern designed to scale to the full catalog.</p>
+
+<h2>Constraints</h2>
+
+<ul>
+  <li>Changelog data originated from engineering workflows (commits, tickets) — transformation had to be reliable without blocking releases</li>
+  <li>Historical entries needed backfill without breaking marketplace or Content Library rendering</li>
+  <li>Connector team bandwidth was limited; automation had to reduce their cleanup burden, not add process</li>
+</ul>
+
+<h2>Outcomes</h2>
+
+<h3>Customer impact</h3>
+<ul>
+  <li>Connector release notes in the Content Library now describe <strong>what changed</strong> in language customers can act on</li>
+  <li>Full release history back-updated for initial connectors — not just new releases going forward</li>
+  <li>Every future connector change flows through the same automated path</li>
+</ul>
+
+<h3>Operational impact</h3>
+<ul>
+  <li>Reduced manual changelog cleanup for the connector team after each release</li>
+  <li>Established a repeatable pattern for customer-facing connector release communication at scale</li>
+  <li>Strong internal reception — peers noted fast turnaround and quality of delivery</li>
+</ul>
+
+<h2>Lessons Learned</h2>
+
+<ul>
+  <li>Customer-facing release artifacts should never inherit engineering commit messages verbatim — automate the translation at publish time</li>
+  <li>Back-updating history matters as much as fixing forward; stale technical entries undermine trust in the whole changelog</li>
+  <li>Small, visible wins on named connectors build confidence before rolling automation across 400+ integrations</li>
+</ul>
+
+</CaseStudyLayout>

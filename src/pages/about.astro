@@ -3,83 +3,191 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="About | Pavan Kumar DG" activePage="about">
-  <div class="container">
-    <section class="hero">
+  <div class="container--wide">
+    <section class="hero--page">
+      <p class="section__eyebrow">About</p>
       <h1 class="hero__title">About Me</h1>
-      <p class="hero__subtitle">
-        Documentation platform and enablement leader with 13.5+ years of experience driving
-        scalable documentation and customer adoption across complex enterprise software and
-        cybersecurity platforms.
+      <p style="margin-top: 1rem;">
+        <a href="/Pavan_Kumar_Resume.pdf" download class="btn btn--primary">Download resume (PDF)</a>
       </p>
     </section>
 
-    <section class="section">
-      <div class="prose">
+    <section class="section" style="padding-top: 0;">
+      <div class="about-intro">
+        <div class="prose" style="max-width: none;">
+          <p class="about-intro__lead">
+            Documentation platform and enablement leader with 13.5+ years of experience driving
+            scalable documentation and customer adoption across complex enterprise software and
+            cybersecurity platforms.
+          </p>
+          <p>
+            I specialize in building modular, automated documentation ecosystems aligned with
+            product releases, deployment workflows, and customer success outcomes. Recent work
+            includes a Cursor-native Tech Pubs knowledge center with Archbee MCP integration,
+            release validation tooling, and code-aware doc drift detection.
+          </p>
+          <p>
+            I collaborate closely with product, engineering, support, and solutions teams to
+            improve usability, onboarding, and self-service success. I actively leverage AI-assisted
+            workflows and code-level analysis to automate documentation tasks, accelerate delivery,
+            and improve technical accuracy.
+          </p>
+        </div>
+        <div>
+          <div class="about-section" style="margin-bottom: 1rem;">
+            <h3>Current Role</h3>
+            <ul>
+              <li>Manager, Technical Publications</li>
+              <li>Swimlane · Hyderabad</li>
+              <li>Since April 2025</li>
+            </ul>
+          </div>
+          <div class="about-section" style="margin-bottom: 1rem;">
+            <h3>Scope</h3>
+            <ul>
+              <li>Own all Swimlane customer documentation</li>
+              <li>Lead a team of 2 technical writers</li>
+              <li>Accountable for release deliverables</li>
+            </ul>
+          </div>
+          <div class="about-section">
+            <h3>Education</h3>
+            <ul>
+              <li>B.Tech, Information Technology</li>
+              <li>JNTU, India — 2012</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section" id="leadership">
+      <p class="section__eyebrow">Leadership</p>
+      <h2>How I run Technical Publications at Swimlane</h2>
+      <div class="about-intro" style="margin-top: 1.5rem;">
+        <div class="prose" style="max-width: none;">
+          <p>
+            I own <strong>end-to-end documentation delivery</strong> for Swimlane's security automation
+            platform — the Turbine User Guide, platform and connector release notes, solutions guides,
+            and Hero AI knowledge updates published on the public documentation site.
+          </p>
+          <p>
+            I manage a <strong>team of two technical writers</strong> and am responsible for all
+            documentation deliverables across major and patch releases. I set standards for user guides,
+            release notes, and known-issues documentation; coordinate publishing validation and
+            post-release verification; and work with product, engineering, customer experience, and
+            solutions teams on clarity and self-service outcomes.
+          </p>
+        </div>
+        <div class="about-section">
+          <h3>What we publish</h3>
+          <ul>
+            <li>Turbine User Guide</li>
+            <li>Platform release notes</li>
+            <li>Connector release notes</li>
+            <li>Solutions guides (including AI SOC)</li>
+            <li>Hero AI text processor updates</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="path-block" style="margin-top: 2rem;">
+        <div class="path-block__header">Release documentation process (summary)</div>
+        <table class="path-table">
+          <tbody>
+            <tr>
+              <th>Author</th>
+              <td>Git-based drafts in a dedicated knowledge center repo — one Jira story per branch and PR</td>
+            </tr>
+            <tr>
+              <th>Review</th>
+              <td>Developer, QE, and PM approval before publish; code-validated UI and behavior where needed</td>
+            </tr>
+            <tr>
+              <th>Plan</th>
+              <td>Epic-driven doc planning at release start — story creation, topic mapping, Hero AI package tickets</td>
+            </tr>
+            <tr>
+              <th>Publish</th>
+              <td>Push to the customer documentation platform at go/no-go only — not before internal sign-off</td>
+            </tr>
+            <tr>
+              <th>Operate</th>
+              <td>AI-assisted workflows, MCP tooling, validation lint, and stale-doc detection against product repos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <span class="callout__icon">Note</span>
         <p>
-          I specialize in building modular, automated documentation ecosystems aligned with
-          product releases, deployment workflows, and customer success outcomes. My work sits at
-          the intersection of documentation strategy, automation, and product enablement.
-        </p>
-        <p>
-          I collaborate closely with product, engineering, support, and solutions teams to
-          improve usability, onboarding, and self-service success. I actively leverage AI-assisted
-          workflows and code-level analysis to automate documentation tasks, accelerate delivery,
-          and improve technical accuracy.
+          I established and maintain Swimlane's internal Technical Publications process
+          (planning, authoring, review, and publish gates). Process details are internal;
+          the summary above reflects how the team operates at a high level.
         </p>
       </div>
     </section>
 
+    <div class="divider"></div>
+
     <section class="section">
+      <p class="section__eyebrow">Expertise</p>
       <h2>Core Capabilities</h2>
       <div class="about-grid">
         <div class="about-section">
           <h3>Strategy and Architecture</h3>
           <ul>
-            <li>Documentation platform strategy and architecture</li>
-            <li>Information architecture and content scalability</li>
-            <li>Docs-as-Code and modular documentation systems</li>
+            <li>Documentation platform strategy</li>
+            <li>Information architecture and scalability</li>
+            <li>Docs-as-Code and modular systems</li>
           </ul>
         </div>
         <div class="about-section">
           <h3>Automation and Delivery</h3>
           <ul>
-            <li>Documentation automation and publishing pipelines</li>
-            <li>AI-assisted documentation automation</li>
-            <li>Agile and release-driven documentation delivery</li>
+            <li>Publishing pipeline automation</li>
+            <li>AI-assisted documentation workflows</li>
+            <li>Agile and release-driven delivery</li>
           </ul>
         </div>
         <div class="about-section">
           <h3>Enablement</h3>
           <ul>
-            <li>Product and customer enablement documentation</li>
+            <li>Product and customer enablement docs</li>
             <li>Knowledge base and support enablement</li>
-            <li>Developer and integration documentation</li>
+            <li>Developer and integration docs</li>
           </ul>
         </div>
         <div class="about-section">
           <h3>Technical Depth</h3>
           <ul>
-            <li>Code analysis for documentation accuracy</li>
-            <li>Deployment and troubleshooting documentation</li>
-            <li>Product release documentation ownership</li>
+            <li>Code analysis for docs accuracy</li>
+            <li>Deployment and troubleshooting docs</li>
+            <li>Release documentation ownership</li>
           </ul>
         </div>
       </div>
     </section>
 
+    <div class="divider"></div>
+
     <section class="section">
+      <p class="section__eyebrow">Tools</p>
       <h2>Tools and Technologies</h2>
-      <div class="about-grid">
+      <div class="about-grid" style="grid-template-columns: repeat(3, 1fr);">
         <div class="about-section">
-          <h3>Authoring and Markup</h3>
+          <h3>Authoring</h3>
           <ul>
-            <li>Archbee, MadCap Flare, Sphinx, Oxygen XML</li>
-            <li>Markdown, reStructuredText, HTML, XML</li>
+            <li>Archbee, MadCap Flare, Sphinx</li>
+            <li>Markdown, reST, HTML, XML</li>
             <li>DITA, Component-based Authoring</li>
           </ul>
         </div>
         <div class="about-section">
-          <h3>Version Control and Automation</h3>
+          <h3>Version Control and CI/CD</h3>
           <ul>
             <li>GitHub, GitLab, Perforce</li>
             <li>Jenkins, GitHub Actions</li>
@@ -87,43 +195,129 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </ul>
         </div>
         <div class="about-section">
-          <h3>Workflow and Collaboration</h3>
+          <h3>Collaboration</h3>
           <ul>
             <li>JIRA, Confluence</li>
-            <li>Slack, Cross-functional collaboration</li>
-            <li>AI-assisted tooling (Cursor, LLM workflows)</li>
+            <li>Cross-functional collaboration</li>
+            <li>AI-assisted tooling (Cursor, LLMs)</li>
           </ul>
         </div>
       </div>
     </section>
 
+    <div class="divider"></div>
+
+    <section class="section" id="recognition">
+      <p class="section__eyebrow">Recognition</p>
+      <h2>Impact and feedback</h2>
+      <p style="max-width: 62ch; margin-bottom: 2rem;">
+        Platform migration, connector automation at scale, and customer-facing quality improvements
+        — with recognition from leadership and peers across the company.
+      </p>
+
+      <div class="impact-grid">
+        <div class="impact-stat">
+          <span class="impact-stat__value">428</span>
+          <span class="impact-stat__label">Connectors automated</span>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-stat__value">~80%</span>
+          <span class="impact-stat__label">CMS cost reduced</span>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-stat__value">40–60+</span>
+          <span class="impact-stat__label">Person-months saved</span>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-stat__value">&lt;20</span>
+          <span class="impact-stat__label">Tech Pubs bugs (6 mo.)</span>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom: 1rem;">What colleagues say</h3>
+      <div class="testimonial-grid testimonial-grid--wide">
+        <blockquote class="testimonial">
+          <p>
+            "Random shoutout to the unsung hero of tech pubs, Pavan. We constantly ping him with
+            suggestions, issues, and questions for our customer documentation and he tirelessly
+            addresses each item super fast — and always with a smile and a 'no problem!' He is
+            always asking for ideas and suggestions for improvement, such as sending out a survey
+            on how to make docs better."
+          </p>
+          <footer>— Midori</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>
+            "We also leverage him beyond documentation sometimes. Always ready to punch above
+            his weight category."
+          </p>
+          <footer>— Nitin Jyoti, VP of Engineering</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"We can't thank him enough for all he does."</p>
+          <footer>— Srikant Vissamsetti, COO</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"Well done and quick turn around!!!"</p>
+          <footer>— Cody, CEO</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>
+            Leadership and peers described the new documentation experience as
+            <strong>"game changing"</strong> — praised for layout, depth, and faster self-service
+            for Support and Field teams.
+          </p>
+          <footer>— After docs.swimlane.com migration</footer>
+        </blockquote>
+      </div>
+
+      <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Formal awards</h3>
+      <div class="about-grid" style="max-width: 720px;">
+        <div class="about-section">
+          <h3>Publication Excellence Award</h3>
+          <ul>
+            <li>Structured content modernization initiative</li>
+          </ul>
+        </div>
+        <div class="about-section">
+          <h3>Spot Bonuses</h3>
+          <ul>
+            <li>Automation contributions and documentation quality improvements</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
     <section class="section">
-      <h2>Career Timeline</h2>
-      <div class="card-grid">
-        <div class="card">
-          <span class="card__tag">2025 - Present</span>
-          <h3 class="card__title">Manager, Technical Publications</h3>
-          <p class="card__desc">Swimlane &middot; Hyderabad, India</p>
+      <p class="section__eyebrow">Career</p>
+      <h2>Timeline</h2>
+      <div class="timeline" style="margin-top: 2rem; max-width: 500px;">
+        <div class="timeline__item">
+          <div class="timeline__date">2025 - Present</div>
+          <div class="timeline__title">Manager, Technical Publications</div>
+          <div class="timeline__company">Swimlane</div>
         </div>
-        <div class="card">
-          <span class="card__tag">2024 - 2025</span>
-          <h3 class="card__title">Senior Technical Writer</h3>
-          <p class="card__desc">Swimlane &middot; Hyderabad, India</p>
+        <div class="timeline__item">
+          <div class="timeline__date">2024 - 2025</div>
+          <div class="timeline__title">Senior Technical Writer</div>
+          <div class="timeline__company">Swimlane</div>
         </div>
-        <div class="card">
-          <span class="card__tag">2015 - 2024</span>
-          <h3 class="card__title">Staff Technical Writer</h3>
-          <p class="card__desc">Synopsys &middot; Hyderabad, India</p>
+        <div class="timeline__item">
+          <div class="timeline__date">2015 - 2024</div>
+          <div class="timeline__title">Staff Technical Writer</div>
+          <div class="timeline__company">Synopsys</div>
         </div>
-        <div class="card">
-          <span class="card__tag">2014 - 2015</span>
-          <h3 class="card__title">Associate Technical Writer</h3>
-          <p class="card__desc">Oracle &middot; Hyderabad, India</p>
+        <div class="timeline__item">
+          <div class="timeline__date">2014 - 2015</div>
+          <div class="timeline__title">Associate Technical Writer</div>
+          <div class="timeline__company">Oracle</div>
         </div>
-        <div class="card">
-          <span class="card__tag">2013 - 2014</span>
-          <h3 class="card__title">Technical Writer Analyst</h3>
-          <p class="card__desc">Dell &middot; Bangalore, India</p>
+        <div class="timeline__item">
+          <div class="timeline__date">2013 - 2014</div>
+          <div class="timeline__title">Technical Writer Analyst</div>
+          <div class="timeline__company">Dell</div>
         </div>
       </div>
     </section>

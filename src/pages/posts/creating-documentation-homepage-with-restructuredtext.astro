@@ -1,0 +1,84 @@
+---
+import PostLayout from "../../layouts/PostLayout.astro";
+---
+
+<PostLayout
+  title="Creating a Captivating Documentation Homepage with reStructuredText"
+  date="2021"
+  summary="A reusable template for building well-structured documentation homepages using sphinx-design cards, tabs, and grids."
+>
+
+<p>
+  A well-structured documentation homepage serves as the gateway to your product documentation.
+  It must be easy to navigate and enable discoverability of your content. This post provides a
+  template you can customize, built using the
+  <a href="https://sphinx-design.readthedocs.io/en/latest/" target="_blank" rel="noopener">sphinx-design</a>
+  extension.
+</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+  <li>Install sphinx-design: <code>pip install sphinx-design</code></li>
+  <li>Add <code>'sphinx_design'</code> to your <code>conf.py</code> extensions list</li>
+</ul>
+
+<h2>The Template</h2>
+
+<p>This template uses three sphinx-design elements: <strong>grids</strong> for product cards,
+<strong>tabs</strong> for organizing documentation by section, and <strong>cards</strong> for
+visual navigation.</p>
+
+<pre><code>Welcome to Your Project Documentation Home
+==========================================
+
+Explore our guides and examples to integrate
+Your Project across various solutions.
+
+.. grid:: 2
+
+    .. grid-item-card::  Your Project for Solution 1
+       :link: https://yourproject.com/solution1
+
+        Brief description of Solution 1.
+
+    .. grid-item-card::  Your Project for Solution 2
+       :link: https://yourproject.com/solution2
+
+        Brief description of Solution 2.
+
+Browse Documentation by Product
+===============================
+
+Product 1
+---------
+
+.. tab-set::
+
+    .. tab-item:: Installation
+
+        * `Installation Guide &lt;link&gt;`__
+        * `Configuration Reference &lt;link&gt;`__
+
+    .. tab-item:: API Reference
+
+        * `API Overview &lt;link&gt;`__
+        * `Endpoints Reference &lt;link&gt;`__</code></pre>
+
+<h2>Why This Works</h2>
+
+<ul>
+  <li><strong>Grid cards</strong> provide visual entry points for different product areas, making the homepage scannable</li>
+  <li><strong>Tab sets</strong> organize dense link lists without overwhelming the page. Users can find their section without scrolling through everything</li>
+  <li><strong>Consistent structure</strong> across product sections makes the homepage predictable and learnable</li>
+</ul>
+
+<h2>Design Principle</h2>
+
+<p>
+  The goal of a documentation homepage is not to display all your content. It is to help users
+  quickly identify which section they need and get there in one click. Cards and tabs serve this
+  purpose better than long lists of links or paragraphs of text.
+</p>
+
+</PostLayout>

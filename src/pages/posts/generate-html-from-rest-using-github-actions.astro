@@ -1,0 +1,87 @@
+---
+import PostLayout from "../../layouts/PostLayout.astro";
+
+const content = `
+<p>
+  Manual documentation publishing is the single largest source of preventable documentation errors.
+  This post walks through building a GitHub Actions workflow that automatically generates HTML from
+  reStructuredText using Sphinx and deploys it to an AWS S3 bucket.
+</p>
+
+<h2>What the Pipeline Does</h2>
+
+<ol>
+  <li>Triggers on pull request merges (and supports manual dispatch)</li>
+  <li>Sets up a Python environment and installs Sphinx dependencies</li>
+  <li>Builds HTML from reST source using <code>sphinx-build</code></li>
+  <li>Archives the build output as a downloadable artifact</li>
+  <li>Deploys the HTML to an S3 bucket via AWS CLI</li>
+</ol>
+
+<h2>The Workflow</h2>
+
+<pre><code>name: Docs
+on:
+  pull_request:
+    paths-ignore:
+      - 'upload/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: \${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: \${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: 'us-east-1'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+
+      - name: Install dependencies
+        run: pip3 install sphinx==5.3.0 sphinx_rtd_theme
+
+      - name: Build docs
+        run: sphinx-build -b html source/ _build
+
+      - name: Upload docs as artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: docs_artifact
+          path: _build
+
+      - name: Deploy to S3
+        run: aws s3 sync _build/ s3://your-bucket/path</code></pre>
+
+<h2>Key Design Decisions</h2>
+
+<ul>
+  <li><strong>Trigger on pull request</strong>: Documentation updates deploy automatically when PRs merge. No manual step needed</li>
+  <li><strong>Manual dispatch</strong>: The <code>workflow_dispatch</code> trigger allows ad-hoc publishing without a code change</li>
+  <li><strong>Artifact archiving</strong>: Each build produces a downloadable snapshot, useful for auditing and rollback</li>
+  <li><strong>paths-ignore</strong>: Prevents unnecessary builds when unrelated files change</li>
+</ul>
+
+<h2>Result</h2>
+
+<p>
+  After setting this up, documentation publishing went from a manual build-and-upload process
+  to a single pull request merge. Build errors are caught in CI before reaching production.
+  The artifact archive provides a history of every published version.
+</p>
+
+<p>
+  This pattern works for any Sphinx-based documentation project. The same approach applies
+  whether you are hosting on S3, GitHub Pages, or any other static hosting provider.
+</p>
+`;
+---
+
+<PostLayout
+  title="Generate HTML from reST Using Sphinx and GitHub Actions"
+  date="2023"
+  summary="How to build a CI/CD pipeline that automatically generates and deploys documentation from reStructuredText to AWS S3."
+>
+  <Fragment set:html={content} />
+</PostLayout>

@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+
+# astro
+.astro/
+
+# env / OS
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# local drafts / handoff (keep private)
+PORTFOLIO-HANDOFF.md
+Pavan_Kumar_Resume.md
+# keep public PDF for download if present
+# public/Pavan_Kumar_Resume.pdf is intentionally published
+
+# playwright / scripts cache
+test-results/
+playwright-report/

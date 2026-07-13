@@ -1,65 +1,142 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const projects = [
+const stages = [
   {
-    slug: "docs-platform-migration",
-    tag: "Platform Migration",
-    title: "Documentation Platform Migration",
-    desc: "Led the end-to-end migration of docs.swimlane.com from MadCap Flare to Archbee, reducing costs by ~80% while improving search, AI-assisted discovery, and content modularity.",
-    company: "Swimlane",
+    id: "plan",
+    num: "01",
+    title: "Plan",
+    subtitle: "Strategy & architecture",
+    desc: "Platform selection, information architecture, and migration planning.",
+    projects: [
+      {
+        slug: "docs-platform-migration",
+        tag: "Swimlane",
+        title: "Documentation Platform Migration",
+        desc: "MadCap Flare to Archbee — ~80% cost reduction, improved search and AI-assisted discovery.",
+      },
+    ],
   },
   {
-    slug: "connector-docs-automation",
-    tag: "Automation",
-    title: "Connector Documentation Automation",
-    desc: "Automated documentation generation for 400+ security integrations by building a source-driven pipeline from connector YAML metadata.",
-    company: "Swimlane",
+    id: "build",
+    num: "02",
+    title: "Build",
+    subtitle: "Systems & automation",
+    desc: "Pipelines, knowledge centers, and publishing infrastructure.",
+    projects: [
+      {
+        slug: "techpubs-knowledge-center",
+        tag: "Swimlane",
+        title: "Tech Pubs Knowledge Center",
+        desc: "Cursor workspace, Archbee MCP, validation tooling, and writer workflows.",
+      },
+      {
+        slug: "connector-changelog-automation",
+        tag: "Swimlane",
+        title: "Connector Changelog Automation",
+        desc: "Customer-friendly Content Library changelogs — no Jira IDs or commit hashes, full history back-updated.",
+      },
+      {
+        slug: "connector-docs-automation",
+        tag: "Swimlane",
+        title: "Connector Documentation Automation",
+        desc: "400+ integrations documented from connector YAML metadata.",
+      },
+      {
+        slug: "synopsys-docs-modernization",
+        tag: "Synopsys",
+        title: "Documentation Modernization",
+        desc: "DITA from FrameMaker, GitHub Actions publishing, Typesense search.",
+      },
+    ],
   },
   {
-    slug: "marketplace-category-remediation",
-    tag: "Data Quality",
-    title: "Marketplace Category Remediation",
-    desc: "Identified and resolved duplicate category metadata across hundreds of marketplace connectors using AI-assisted code analysis and bulk automation.",
-    company: "Swimlane",
+    id: "assure",
+    num: "03",
+    title: "Assure",
+    subtitle: "Quality & accuracy",
+    desc: "Auditing, validation gates, and release documentation reliability.",
+    projects: [
+      {
+        slug: "release-docs-reliability",
+        tag: "Swimlane",
+        title: "Release Documentation Reliability",
+        desc: "Release notes quality, docs auditing against codebase, changelog automation.",
+      },
+      {
+        slug: "marketplace-category-remediation",
+        tag: "Swimlane",
+        title: "Content Library Category Remediation",
+        desc: "Human + AI session: 38 AppDirect categories → 17 clean, zero duplicates in the UI.",
+      },
+    ],
   },
   {
-    slug: "release-docs-reliability",
-    tag: "Release Engineering",
-    title: "Release Documentation Reliability",
-    desc: "Improved release notes quality, docs accuracy auditing, and changelog automation to reduce customer-facing documentation defects.",
-    company: "Swimlane",
-  },
-  {
-    slug: "synopsys-docs-modernization",
-    tag: "Docs Infrastructure",
-    title: "Documentation Modernization and Publishing Automation",
-    desc: "Led DITA modernization from FrameMaker, built CI/CD publishing pipelines with GitHub Actions and Sphinx, and integrated Typesense search across processor platform documentation.",
-    company: "Synopsys",
+    id: "operate",
+    num: "04",
+    title: "Operate",
+    subtitle: "Publish & scale",
+    desc: "Ongoing release coverage, team process, and continuous improvement.",
+    projects: [
+      {
+        slug: "techpubs-knowledge-center",
+        tag: "Swimlane",
+        title: "Release Operations",
+        desc: "26.2.0 draft portfolio — Hero AI, AI SOC solution, platform features — with validation gates before Archbee publish.",
+      },
+    ],
   },
 ];
 ---
 
 <BaseLayout title="Work | Pavan Kumar DG" activePage="work">
-  <div class="container">
-    <section class="hero">
+  <div class="container--wide">
+
+    <section class="hero--page">
+      <p class="section__eyebrow">Portfolio</p>
       <h1 class="hero__title">Work</h1>
       <p class="hero__subtitle">
-        Selected projects that demonstrate documentation strategy, platform thinking, automation, and measurable customer impact.
+        Projects organized by documentation lifecycle — the same Plan → Build → Assure → Operate
+        framework I use for product documentation and Tech Pubs operations.
       </p>
     </section>
 
-    <section class="section">
-      <div class="card-grid">
-        {projects.map((p) => (
-          <a href={`/case-studies/${p.slug}`} class="card" style="text-decoration:none;">
-            <span class="card__tag">{p.company} &middot; {p.tag}</span>
-            <h3 class="card__title">{p.title}</h3>
-            <p class="card__desc">{p.desc}</p>
-            <span class="card__link">Read case study &rarr;</span>
-          </a>
-        ))}
-      </div>
-    </section>
+    <div class="pipeline-banner">
+      {stages.map((s) => (
+        <a href={`#${s.id}`} class="pipeline-banner__step" style="text-decoration:none;color:inherit;">
+          <div class="pipeline-banner__label">{s.title}</div>
+          <div class="pipeline-banner__sub">{s.subtitle}</div>
+        </a>
+      ))}
+    </div>
+
+    {stages.map((stage) => (
+      <section id={stage.id} class="pipeline-section">
+        <div class="pipeline-section__head">
+          <span class="pipeline-section__num">{stage.num}</span>
+          <h2>{stage.title}</h2>
+          <p class="pipeline-section__desc">{stage.desc}</p>
+        </div>
+        <div class="stage-grid">
+          {stage.projects.map((p) => (
+            <a href={`/case-studies/${p.slug}`} class="card" style="text-decoration:none;">
+              <span class="card__tag">{p.tag}</span>
+              <h3 class="card__title">{p.title}</h3>
+              <p class="card__desc">{p.desc}</p>
+              <span class="card__link">Read case study &rarr;</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <div class="callout">
+      <span class="callout__icon">Note</span>
+      <p>
+        <strong>Confidentiality:</strong> All case studies use generalized language.
+        Details are adapted for a public portfolio.
+      </p>
+    </div>
+
   </div>
 </BaseLayout>
