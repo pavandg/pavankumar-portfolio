@@ -16,8 +16,12 @@ dist/
 # local drafts / handoff (keep private)
 PORTFOLIO-HANDOFF.md
 Pavan_Kumar_Resume.md
-# keep public PDF for download if present
-# public/Pavan_Kumar_Resume.pdf is intentionally published
+# root PDF is a local copy of public/; publish only public/
+/Pavan_Kumar_Resume.pdf
+
+# optional Salesforce-targeted resume (not published)
+resume/resume-salesforce.html
+scripts/generate-salesforce-resume-pdf.mjs
 
 # playwright / scripts cache
 test-results/
