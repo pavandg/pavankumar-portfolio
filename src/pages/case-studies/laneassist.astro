@@ -1,0 +1,116 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+---
+
+<CaseStudyLayout
+  title="LaneAssist — Field Docs and RFP Assistant"
+  summary="Built a Slack-native assistant so Sales, SEs, and Support can ask product questions and auto-fill RFP/RFI questionnaires from published docs — without Cursor, MCP setup, or a docs specialist in the loop."
+  date="July 2026"
+  role="Owner / Builder"
+  tags={["Slack Bot", "RFP Automation", "Docs Agent", "Field Enablement", "AI Ops"]}
+>
+
+<h2>Problem</h2>
+
+<p>
+  Technical Publications had already built Cursor skills and MCP tooling that could answer
+  product questions from docs.swimlane.com and draft RFP responses. That workflow worked for
+  writers — but the field team (Sales, solutions engineers, Support) still had to go through
+  Cursor, clone a repo, or ping Tech Pubs for every questionnaire.
+</p>
+
+<ul>
+  <li>Field users needed answers from published docs with citations — in Slack, not an IDE</li>
+  <li>RFP and security questionnaires arrived as Excel or Word files that needed row-by-row research</li>
+  <li>Existing RFP evaluator scripts lived in the knowledge center repo; they were not packaged for non-writers</li>
+  <li>Quality issues (dead links, classic-playbook hits, on-prem defaults, overfilled Limitations) had to be fixed in the agent path, not only in Cursor prompts</li>
+</ul>
+
+<h2>My Role</h2>
+
+<p>
+  I designed and built LaneAssist end-to-end: Slack Socket Mode bot, OpenAI tool-calling agent,
+  Archbee and Confluence retrieval, RFP file pipeline (reuse of the Tech Pubs RFP evaluator
+  scripts), Q&amp;A cache, CLI for local testing, and an answer-quality eval harness. I iterated
+  with field and SE feedback — including a Tennessee AI-governance RFI review — to tighten
+  grounding and link validation.
+</p>
+
+<h2>What I Built</h2>
+
+<h3>1. Slack bot for the field channel</h3>
+
+<ul>
+  <li>Socket Mode transport (no public webhook URL required)</li>
+  <li><code>@LaneAssist &lt;question&gt;</code> → cited answer in a public thread</li>
+  <li>Upload <code>.xlsx</code> / <code>.docx</code> → auto-fill vendor responses and return the completed file in-thread</li>
+  <li>Thread follow-ups without requiring a re-mention</li>
+</ul>
+
+<h3>2. Dual-source retrieval agent</h3>
+
+<ul>
+  <li><strong>Published docs</strong> — Archbee API across Turbine User Guide, Solutions, Connectors, and Release Notes (same knowledge surface as the Docs Agent MCP)</li>
+  <li><strong>Internal knowledge</strong> — Confluence REST (GRC, policies, commercial, unpublished release notes) when the question requires it</li>
+  <li><strong>Q&amp;A cache</strong> — fuzzy cache for repeat field questions</li>
+</ul>
+
+<h3>3. RFP pipeline</h3>
+
+<ul>
+  <li>Detects annex, question-response, and Word RFI layouts</li>
+  <li>Exports empty requirements, drafts per row with docs research, applies answers back to a file copy</li>
+  <li>Posts progress and a gap summary for human review</li>
+</ul>
+
+<h3>4. Quality and grounding controls</h3>
+
+<ul>
+  <li>Exclude Classic Playbooks from search and citations</li>
+  <li>Cloud-by-default answers (on-prem docs only when the requirement asks)</li>
+  <li>Validate <code>docs.swimlane.com</code> links; block invented third-party paths that soft-404</li>
+  <li>Quiet Limitations by default; stronger anti-hallucination for AI-governance RFIs</li>
+  <li>Eval harness with assertion cases (must-cite URL, must mention expected terms, reject weak “I couldn’t find” hedges)</li>
+</ul>
+
+<h3>5. Local CLI</h3>
+
+<p>
+  Interactive Q&amp;A and <code>--rfp</code> file processing for development without Slack tokens —
+  same agent path as production.
+</p>
+
+<h2>Architecture (summary)</h2>
+
+<pre><code>Slack (Socket Mode)
+  ├── Question  → Archbee + Confluence + Q&amp;A cache → cited reply
+  └── RFP file  → export → agent per row → apply → upload completed file
+</code></pre>
+
+<h2>Constraints</h2>
+
+<ul>
+  <li>Must work for non-technical field users — no Cursor or MCP setup</li>
+  <li>Customer-facing RFP answers must not leak internal-only URLs or invent product claims</li>
+  <li>Deployment cannot rely on a developer laptop’s local MCP config — Archbee space keys must load from environment</li>
+  <li>RFP formats vary widely (annex Excel, FedConnect two-column, Word narrative)</li>
+</ul>
+
+<h2>Outcomes</h2>
+
+<ul>
+  <li>Field team can ask product questions and attach questionnaires in Slack without Tech Pubs in the critical path</li>
+  <li>RFP drafting reuses the same verified docs + evaluator pipeline writers already trust</li>
+  <li>Answer-quality regressions are catchable via an eval harness before prompt or model changes ship</li>
+  <li>Documented feedback loop from real RFI reviews into grounding rules (classic exclusion, cloud default, link scrubbing)</li>
+</ul>
+
+<h2>Lessons Learned</h2>
+
+<ul>
+  <li>Packaging an internal Cursor workflow for Slack is mostly productization: transport, auth, progress UX, and refusal to invent when sources are thin</li>
+  <li>Link verification belongs in the agent path, not only in a post-hoc script — field users will share whatever the bot posts</li>
+  <li>For AI-governance RFIs aimed at GRC suites, honest Partial plus documented SOAR/Hero AI controls beats a polished hallucination</li>
+</ul>
+
+</CaseStudyLayout>

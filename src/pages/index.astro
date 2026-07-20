@@ -5,8 +5,9 @@ import { withBase } from "../lib/paths";
 const paths = [
   { goal: "Evaluate me for a documentation leadership role", link: withBase("/about#leadership"), label: "Leadership & scope" },
   { goal: "See platform, automation, and MCP work", link: withBase("/work"), label: "Work portfolio" },
+  { goal: "See LaneAssist — field docs & RFP bot", link: withBase("/case-studies/laneassist"), label: "LaneAssist case study" },
   { goal: "Understand how I use AI in Tech Pubs", link: withBase("/posts/how-i-use-ai-for-docs-ops"), label: "AI for docs operations" },
-  { goal: "Read a flagship case study", link: withBase("/case-studies/techpubs-knowledge-center"), label: "Knowledge center & automation" },
+  { goal: "Read the knowledge center case study", link: withBase("/case-studies/techpubs-knowledge-center"), label: "Knowledge center & automation" },
   { goal: "Get in touch", link: withBase("/contact"), label: "Contact" },
 ];
 ---
@@ -128,8 +129,11 @@ const paths = [
         <p>Connector documentation pipeline for 400+ integrations from source YAML metadata.</p>
       </div>
       <div class="capability">
-        <h3>Release ownership</h3>
-        <p>Hero AI, AI SOC solution guides, release notes, and documentation accuracy auditing.</p>
+        <h3>Field enablement</h3>
+        <p>
+          <a href={withBase("/case-studies/laneassist")}>LaneAssist</a> — Slack docs Q&amp;A and RFP
+          auto-fill for Sales and SEs, grounded in published documentation.
+        </p>
       </div>
     </div>
 
