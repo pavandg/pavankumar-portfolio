@@ -33,6 +33,7 @@ const homeUrl = "https://pavandg.github.io/pavankumar-portfolio/index.html";
         <ul class="nav__links">
           <li><a href={homeUrl} class={activePage === "home" ? "active" : ""}>Home</a></li>
           <li><a href={withBase("/work")} class={activePage === "work" ? "active" : ""}>Work</a></li>
+          <li><a href={withBase("/services")} class={activePage === "services" ? "active" : ""}>Services</a></li>
           <li><a href={withBase("/writing")} class={activePage === "writing" ? "active" : ""}>Writing</a></li>
           <li><a href={withBase("/about")} class={activePage === "about" ? "active" : ""}>About</a></li>
           <li><a href={withBase("/contact")} class={activePage === "contact" ? "active nav__cta" : "nav__cta"}>Contact</a></li>
@@ -53,6 +54,7 @@ const homeUrl = "https://pavandg.github.io/pavankumar-portfolio/index.html";
         <div class="footer__links">
           <a href="https://www.linkedin.com/in/pavan-kumar-dharmavaram-giridhar/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="mailto:pavandg2006@gmail.com">Email</a>
+          <a href={withBase("/services")}>Services</a>
           <a href={withBase("/work")}>Work</a>
         </div>
       </div>

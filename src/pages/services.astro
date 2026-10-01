@@ -1,0 +1,227 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
+
+const problems = [
+  {
+    title: "Documentation modernization audit",
+    desc: "A 1–2 week assessment of tooling, architecture, workflows, automation, and AI-readiness — with a prioritized roadmap.",
+  },
+  {
+    title: "Platform migration",
+    desc: "Move from MadCap, Confluence, DITA, or Sphinx to a modern docs platform while releases keep shipping.",
+  },
+  {
+    title: "Documentation automation",
+    desc: "Remove repetitive work: API/connector generation, release notes, link checks, validation, and drift detection.",
+  },
+  {
+    title: "AI-readiness for docs",
+    desc: "Make documentation reliable for people, search, assistants, and agents — structure, canonical sources, and traceability.",
+  },
+  {
+    title: "Documentation operating model",
+    desc: "Clarify who writes, reviews, and owns accuracy — and how docs enter the product lifecycle.",
+  },
+];
+
+const packages = [
+  {
+    name: "Documentation Health Check",
+    duration: "1–2 weeks",
+    price: "Starting from ₹50,000",
+    priceNote: "Or equivalent USD for remote engagements",
+    deliverables: [
+      "Tooling, content, IA, and workflow assessment",
+      "Automation and AI-readiness opportunities",
+      "Prioritized modernization roadmap",
+    ],
+  },
+  {
+    name: "Modernization Blueprint",
+    duration: "2–4 weeks",
+    price: "Starting from ₹1,50,000",
+    priceNote: "Scoped to company size and stack",
+    deliverables: [
+      "Everything in the Health Check",
+      "Target architecture and platform recommendations",
+      "Migration strategy, content model, and governance",
+      "Automation roadmap and implementation plan",
+    ],
+  },
+  {
+    name: "Implementation",
+    duration: "6–12+ weeks",
+    price: "Custom scope",
+    priceNote: "Migration, automation, CI/CD, training",
+    deliverables: [
+      "Platform migration and content restructuring",
+      "Publishing pipelines and validation gates",
+      "Automation and AI-assisted workflows",
+      "Team enablement and operating cadence",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Services | Documentation Modernization & Automation"
+  description="I help SaaS and technology companies modernize documentation platforms, workflows, and content operations using Docs-as-Code, automation, and AI."
+  activePage="services"
+>
+  <div class="container--wide">
+
+    <header class="docs-intro">
+      <span class="docs-intro__badge">Consulting</span>
+      <h1>Modernize your <em>documentation operation</em></h1>
+      <p class="docs-intro__purpose">
+        I help SaaS and technology companies move from manual, legacy documentation workflows to
+        scalable platforms, automation, and AI-assisted processes — without freezing product releases.
+      </p>
+      <p style="margin-top: 1.25rem;">
+        <a href="mailto:pavandg2006@gmail.com?subject=Documentation%20modernization%20conversation" class="btn btn--primary">Book a 30-minute conversation</a>
+      </p>
+    </header>
+
+    <section class="section" style="padding-top: 0;">
+      <p class="section__eyebrow">Positioning</p>
+      <h2>Not freelance writing hours</h2>
+      <p style="max-width: 62ch; margin-bottom: 1.5rem;">
+        This is documentation modernization and automation consulting. The goal is less manual work,
+        clearer ownership, faster release docs, and content that scales with your product — for humans
+        and for AI-assisted retrieval.
+      </p>
+      <div class="path-block">
+        <div class="path-block__header">Who this is for</div>
+        <table class="path-table">
+          <tbody>
+            <tr>
+              <th>Company shape</th>
+              <td>SaaS, cybersecurity, DevTools, API / developer platforms — roughly 50–1,000 people</td>
+            </tr>
+            <tr>
+              <th>Typical signal</th>
+              <td>3–10 writers or product teams, but tooling and workflows still look like 2018</td>
+            </tr>
+            <tr>
+              <th>Stack clues</th>
+              <td>MadCap, Confluence, Word/Google Docs publishing, manual release notes, fragmented API docs</td>
+            </tr>
+            <tr>
+              <th>Decision makers</th>
+              <td>VP Engineering, Head of Docs / DX, Documentation Manager, CTO (smaller companies)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+      <p class="section__eyebrow">Problems I solve</p>
+      <h2>Five consulting offerings</h2>
+      <div class="capability-grid" style="margin-top: 1.5rem;">
+        {problems.map((p) => (
+          <div class="capability">
+            <h3>{p.title}</h3>
+            <p>{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section" id="packages">
+      <p class="section__eyebrow">How to engage</p>
+      <h2>Fixed-outcome packages</h2>
+      <p style="max-width: 58ch; margin-bottom: 1.75rem;">
+        Start with a paid assessment — not an open-ended retainer. Prices are starting points and
+        adjust with scope and company size.
+      </p>
+      <div class="service-packages">
+        {packages.map((pkg, i) => (
+          <article class={`service-package${i === 0 ? " service-package--featured" : ""}`}>
+            {i === 0 && <span class="service-package__badge">Start here</span>}
+            <h3>{pkg.name}</h3>
+            <p class="service-package__meta">{pkg.duration}</p>
+            <p class="service-package__price">{pkg.price}</p>
+            <p class="service-package__note">{pkg.priceNote}</p>
+            <ul>
+              {pkg.deliverables.map((d) => (
+                <li>{d}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+      <p class="section__eyebrow">Proof</p>
+      <h2>What modernization looks like in practice</h2>
+      <p style="max-width: 62ch; margin-bottom: 1.5rem;">
+        At Swimlane I led documentation platform migration, automation across 400+ connectors,
+        AI-assisted writer workflows, and field enablement (LaneAssist) — while keeping releases
+        on track. Details are generalized for confidentiality.
+      </p>
+      <div class="path-block">
+        <div class="path-block__header">Selected outcomes</div>
+        <table class="path-table">
+          <tbody>
+            <tr>
+              <th>Platform</th>
+              <td>
+                MadCap Flare → Archbee (~80% cost reduction) with parallel release coverage —
+                <a href={withBase("/case-studies/docs-platform-migration")}>case study</a>
+              </td>
+            </tr>
+            <tr>
+              <th>Automation</th>
+              <td>
+                Source-driven docs for 428 connectors —
+                <a href={withBase("/case-studies/connector-docs-automation")}>case study</a>
+              </td>
+            </tr>
+            <tr>
+              <th>AI ops</th>
+              <td>
+                Knowledge center, MCP tooling, validation gates —
+                <a href={withBase("/case-studies/techpubs-knowledge-center")}>case study</a>
+              </td>
+            </tr>
+            <tr>
+              <th>Field enablement</th>
+              <td>
+                Slack docs Q&amp;A and RFP auto-fill —
+                <a href={withBase("/case-studies/laneassist")}>LaneAssist</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="callout">
+      <span class="callout__icon">Note</span>
+      <p>
+        First conversations are discovery, not a hard sell. If documentation scalability or
+        tooling modernization is already on your mind, I can share observations specific to your
+        docs site or stack.
+      </p>
+    </div>
+
+    <section class="cta-band">
+      <h2>Start with a short conversation.</h2>
+      <p>Documentation Health Check, platform migration, or automation — tell me what you’re seeing.</p>
+      <a href="mailto:pavandg2006@gmail.com?subject=Documentation%20modernization%20conversation" class="btn btn--primary">Email me</a>
+      <p style="margin-top: 1rem;">
+        <a href={withBase("/contact")} style="color: #d6d3d1;">Contact page &rarr;</a>
+      </p>
+    </section>
+
+  </div>
+</BaseLayout>

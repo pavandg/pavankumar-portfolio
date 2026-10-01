@@ -1028,6 +1028,80 @@ img { max-width: 100%; height: auto; }
   color: var(--color-text);
 }
 
+/* ── Services packages ── */
+.service-packages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.service-package {
+  position: relative;
+  padding: 1.5rem 1.35rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.service-package--featured {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  background: var(--color-accent-soft);
+}
+
+.service-package__badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-text);
+  margin-bottom: 0.65rem;
+}
+
+.service-package h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+.service-package__meta {
+  font-size: 0.8rem;
+  color: var(--color-text-tertiary);
+  margin-bottom: 0.75rem;
+}
+
+.service-package__price {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.2rem;
+}
+
+.service-package__note {
+  font-size: 0.78rem;
+  color: var(--color-text-tertiary);
+  margin-bottom: 1rem;
+}
+
+.service-package ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.service-package li {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.4rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .service-packages { grid-template-columns: 1fr; }
+}
+
 /* ── Testimonials & impact stats ── */
 .impact-grid {
   display: grid;
