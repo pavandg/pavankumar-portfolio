@@ -29,8 +29,6 @@ const packages = [
   {
     name: "Documentation Health Check",
     duration: "1–2 weeks",
-    price: "Starting from ₹50,000",
-    priceNote: "Or equivalent USD for remote engagements",
     deliverables: [
       "Tooling, content, IA, and workflow assessment",
       "Automation and AI-readiness opportunities",
@@ -40,8 +38,6 @@ const packages = [
   {
     name: "Modernization Blueprint",
     duration: "2–4 weeks",
-    price: "Starting from ₹1,50,000",
-    priceNote: "Scoped to company size and stack",
     deliverables: [
       "Everything in the Health Check",
       "Target architecture and platform recommendations",
@@ -52,8 +48,6 @@ const packages = [
   {
     name: "Implementation",
     duration: "6–12+ weeks",
-    price: "Custom scope",
-    priceNote: "Migration, automation, CI/CD, training",
     deliverables: [
       "Platform migration and content restructuring",
       "Publishing pipelines and validation gates",
@@ -135,10 +129,10 @@ const packages = [
 
     <section class="section" id="packages">
       <p class="section__eyebrow">How to engage</p>
-      <h2>Fixed-outcome packages</h2>
+      <h2>How we can work together</h2>
       <p style="max-width: 58ch; margin-bottom: 1.75rem;">
-        Start with a paid assessment — not an open-ended retainer. Prices are starting points and
-        adjust with scope and company size.
+        Start with a short discovery conversation, then a focused assessment if it makes sense —
+        not an open-ended retainer.
       </p>
       <div class="service-packages">
         {packages.map((pkg, i) => (
@@ -146,8 +140,6 @@ const packages = [
             {i === 0 && <span class="service-package__badge">Start here</span>}
             <h3>{pkg.name}</h3>
             <p class="service-package__meta">{pkg.duration}</p>
-            <p class="service-package__price">{pkg.price}</p>
-            <p class="service-package__note">{pkg.priceNote}</p>
             <ul>
               {pkg.deliverables.map((d) => (
                 <li>{d}</li>
